@@ -9,6 +9,9 @@ import a3.message.Message;
  */
 public interface MonitorMessageHandler {
 
+    boolean ON = true;
+    boolean OFF = false;
+
     boolean canHandleMessageWithId(int id);
 
     void handleMessage(Message message);
