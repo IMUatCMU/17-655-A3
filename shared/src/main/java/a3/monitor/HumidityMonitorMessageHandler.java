@@ -29,7 +29,7 @@ public class HumidityMonitorMessageHandler implements MonitorMessageHandler {
     }
 
     @Override
-    public void handleMessage(Message message) {
+    public void handleMessage(Message message, Object context) {
         Float humidity;
         try {
             humidity = Float.valueOf(message.GetMessage());

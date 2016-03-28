@@ -29,7 +29,7 @@ public class TemperatureMonitorMessageHandler implements MonitorMessageHandler {
     }
 
     @Override
-    public void handleMessage(Message message) {
+    public void handleMessage(Message message, Object context) {
         Float temperature;
         try {
             temperature = Float.valueOf(message.GetMessage());

@@ -14,5 +14,9 @@ public interface MonitorMessageHandler {
 
     boolean canHandleMessageWithId(int id);
 
-    void handleMessage(Message message);
+    void handleMessage(Message message, Object context);
+
+    default void handleMessage(Message message) {
+        handleMessage(message, null);
+    }
 }

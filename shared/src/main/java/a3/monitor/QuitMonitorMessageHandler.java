@@ -26,7 +26,7 @@ public class QuitMonitorMessageHandler implements MonitorMessageHandler {
     }
 
     @Override
-    public void handleMessage(Message message) {
+    public void handleMessage(Message message, Object context) {
         indicators.forEach(JFrame::dispose);
         messageWindow.WriteMessage("Simulation will stop.");
         throw new MonitorQuitSignal();
