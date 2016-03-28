@@ -4,50 +4,20 @@ import a3.message.Message;
 import a3.message.MessageManagerInterface;
 import a3.message.MessageQueue;
 import java.util.List;
-import java.util.stream.IntStream;
 import javax.annotation.Resource;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 /**
  * @since 1.0.0
  */
-public class ECSMonitor extends Thread implements ApplicationContextAware {
+public class ECSMonitor extends Thread {
 
     private List<MonitorUI> monitorUIs;
     private List<MonitorMessageHandler> messageHandlers;
-    private ApplicationContext applicationContext;
     private MessageManagerInterface messageManager;
-    private String messageManagerIP;
-    private boolean registered = false;
+    private boolean registered = true;
 
     @Resource(name = "messageWindow")
     MessageWindow messageWindow;
-
-    public ECSMonitor() {
-        try {
-            messageManager = new MessageManagerInterface();
-        } catch (Exception e) {
-            System.out.println("ECSMonitor::Error instantiating message manager interface: " + e);
-            this.registered = false;
-        }
-    }
-
-    public ECSMonitor(String MsgIpAddress) {
-        messageManagerIP = MsgIpAddress;
-        try {
-            messageManager = new MessageManagerInterface(messageManagerIP);
-        } catch (Exception e) {
-            System.out.println("ECSMonitor::Error instantiating message manager interface: " + e);
-            this.registered = false;
-        }
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
 
     @Override
     public void run() {
@@ -55,6 +25,7 @@ public class ECSMonitor extends Thread implements ApplicationContextAware {
 
         if (messageManager == null) {
             messageWindow.WriteMessage("Unable to register with message manager.");
+            this.registered = false;
             return;
         }
 
@@ -69,13 +40,14 @@ public class ECSMonitor extends Thread implements ApplicationContextAware {
                 break;
 
             try {
-                IntStream.of(messageQueue.GetSize()).forEach(value -> {
+                for (int i = 0; i < messageQueue.GetSize(); i++) {
                     Message message = messageQueue.GetMessage();
                     messageHandlers.forEach(monitorMessageHandler -> {
+                        System.out.println(monitorMessageHandler);
                         if (monitorMessageHandler.canHandleMessageWithId(message.GetMessageId()))
                             monitorMessageHandler.handleMessage(message);
                     });
-                });
+                }
             } catch (MonitorQuitSignal signal) {
                 try {
                     messageManager.UnRegister();
@@ -130,5 +102,13 @@ public class ECSMonitor extends Thread implements ApplicationContextAware {
 
     public boolean isRegistered() {
         return registered;
+    }
+
+    public MessageManagerInterface getMessageManager() {
+        return messageManager;
+    }
+
+    public void setMessageManager(MessageManagerInterface messageManager) {
+        this.messageManager = messageManager;
     }
 }

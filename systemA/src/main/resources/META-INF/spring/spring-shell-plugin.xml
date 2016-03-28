@@ -42,6 +42,11 @@
         </property>
     </bean>
 
+    <!-- MessageManager -->
+    <bean id="messageManager" class="a3.assist.MessageManagerInterfaceFactoryBean">
+        <constructor-arg index="0" value="#{systemProperties['ip'] ?: 'localhost'}" />
+    </bean>
+
     <bean id="monitor" class="a3.monitor.ECSMonitor" init-method="start" destroy-method="interrupt">
         <property name="monitorUIs">
             <list>
@@ -57,5 +62,6 @@
                 <ref bean="quitMonitorMessageHandler" />
             </list>
         </property>
+        <property name="messageManager" ref="messageManager" />
     </bean>
 </beans>
