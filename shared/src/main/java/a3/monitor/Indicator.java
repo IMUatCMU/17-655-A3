@@ -6,12 +6,13 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import org.springframework.beans.factory.InitializingBean;
 
 /**
  * @author Weinan Qiu
  * @since 1.0.0
  */
-public class Indicator extends JFrame implements MonitorUI {
+public class Indicator extends JFrame implements MonitorUI, InitializingBean {
 
     private int Height;
     private int UpperLeftX;
@@ -22,8 +23,15 @@ public class Indicator extends JFrame implements MonitorUI {
     private JFrame IndicatorWindow;
 
     @Override
+    public void afterPropertiesSet() throws Exception {
+        displayUI();
+    }
+
+    @Override
     public void displayUI() {
+        validate();
         repaint();
+        setVisible(true);
     }
 
     public Indicator(String Label, float Xpos, float Ypos) {
@@ -359,7 +367,9 @@ public class Indicator extends JFrame implements MonitorUI {
 
         } // switch
 
-        repaint();
+        displayUI();
+        displayUI();
+        displayUI();
 
     } // SetLampColor
 

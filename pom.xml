@@ -13,6 +13,7 @@
         <module>systemA</module>
         <module>temp-sensor</module>
         <module>humidity-sensor</module>
+        <module>temp-controller</module>
     </modules>
     <packaging>pom</packaging>
 
