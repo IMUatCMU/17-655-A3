@@ -35,17 +35,32 @@ public class ECSMonitor extends Thread {
         int delay = 1000;
 
         while (!done) {
+            boolean handled = false;
             MessageQueue messageQueue = getMessageQueue();
             if (messageQueue == null)
                 break;
 
             try {
-                for (int i = 0; i < messageQueue.GetSize(); i++) {
+                int size = messageQueue.GetSize();
+                for (int i = 0; i < size; i++) {
                     Message message = messageQueue.GetMessage();
-                    messageHandlers.forEach(monitorMessageHandler -> {
-                        if (monitorMessageHandler.canHandleMessageWithId(message.GetMessageId()))
+
+                    messageWindow.WriteMessage("[DEBUG] got message id: " + message.GetMessageId());
+
+                    for (MonitorMessageHandler monitorMessageHandler: messageHandlers) {
+                        if (monitorMessageHandler.canHandleMessageWithId(message.GetMessageId())) {
                             monitorMessageHandler.handleMessage(message);
-                    });
+                            handled = true;
+                        }
+                    }
+
+//                    if (!handled) {
+//                        try {
+//                            messageManager.SendMessage(message);
+//                        } catch (Exception ex) {
+//                            messageWindow.WriteMessage("Post back error: " + ex.getMessage());
+//                        }
+//                    }
                 }
             } catch (MonitorQuitSignal signal) {
                 try {

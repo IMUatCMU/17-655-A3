@@ -57,5 +57,6 @@ public class TemperatureControlRelayHandler implements MonitorMessageHandler {
         } catch (Exception e) {
             System.out.println("Error Confirming Message:: " + e);
         }
+        messageWindow.WriteMessage("Sent new control message");
     }
 }

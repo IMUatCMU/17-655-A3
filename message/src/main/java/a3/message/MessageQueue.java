@@ -39,6 +39,13 @@ public class MessageQueue implements Serializable {
     public Message GetMessage() {
         Message m = null;
 
+//        //DEBUG
+//        System.out.println("Snapshot for: " + QueueId + " -------------------");
+//        for (Message a : MessageList) {
+//            System.out.println("id: " + a.GetMessageId() + " content: " + a.GetMessage());
+//        }
+//        System.out.println("----------------------------------");
+
         if (MessageList.size() > 0) {
             m = this.MessageList.get(0);
             this.MessageList.removeElementAt(0);

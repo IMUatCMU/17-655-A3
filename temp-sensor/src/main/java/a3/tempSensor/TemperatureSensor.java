@@ -40,6 +40,7 @@ public class TemperatureSensor implements InitializingBean {
 
     private void start() {
         displayStartInformation();
+        TemperatureHandlingContext tempContext = new TemperatureHandlingContext();
 
         messageWindow.WriteMessage("Initializing Temperature Simulation::");
         Float temp = 50.00f, driftValue;
@@ -48,8 +49,13 @@ public class TemperatureSensor implements InitializingBean {
         } else {
             driftValue = getRandomNumber();
         }
+        tempContext.setCurrentTemp(temp);
+        tempContext.setDrift(driftValue);
+        tempContext.setChillerState(false);
+        tempContext.setHeaterState(false);
         messageWindow.WriteMessage("   Initial Temperature Set:: " + temp);
         messageWindow.WriteMessage("   Drift Value Set:: " + driftValue);
+
 
         messageWindow.WriteMessage("Beginning Simulation... ");
         postTemperature(temp);
@@ -57,6 +63,7 @@ public class TemperatureSensor implements InitializingBean {
 
         boolean done = false;
         while (!done) {
+            boolean handled = false;
             MessageQueue messageQueue;
             try {
                 messageQueue = messageManager.GetMessageQueue();
@@ -66,12 +73,17 @@ public class TemperatureSensor implements InitializingBean {
             }
 
             try {
-                for (int i = 0; i < messageQueue.GetSize(); i++) {
+                int size = messageQueue.GetSize();
+                messageWindow.WriteMessage("[DEBUG] message count: " + size);
+                for (int i = 0; i < size; i++) {
                     Message message = messageQueue.GetMessage();
+                    //messageWindow.WriteMessage("[DEBUG] message id: " + message.GetMessageId());
 
                     for (MessageResponder responder : messageResponders) {
                         if (responder.canRespondToMessageWithId(message.GetMessageId())) {
-                            temp = (Float) responder.respondToMessage(message, Arrays.asList(temp, driftValue));
+                            handled = true;
+                            responder.respondToMessage(message, tempContext);
+                            break;
                         }
                     }
                 }
@@ -84,6 +96,19 @@ public class TemperatureSensor implements InitializingBean {
                 }
                 messageWindow.WriteMessage("\n\nSimulation Stopped.");
             }
+
+            //messageWindow.WriteMessage("Heater: " + tempContext.isHeaterState() + " Chiller: " + tempContext.isChillerState());
+
+            if (tempContext.isHeaterState()) {
+                temp += getRandomNumber();
+            }
+            if (!tempContext.isHeaterState() && !tempContext.isChillerState()) {
+                temp += driftValue;
+            }
+            if (tempContext.isChillerState()) {
+                temp -= getRandomNumber();
+            }
+            postTemperature(temp);
 
             try {
                 Thread.sleep(2500);

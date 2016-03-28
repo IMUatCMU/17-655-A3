@@ -1,6 +1,7 @@
 package a3.tempSensor;
 
 import a3.sensor.KillSignalResponder;
+import a3.sensor.MessageResponder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,12 +13,12 @@ import org.springframework.context.annotation.Configuration;
 public class MessageHandlerConfig {
 
     @Bean
-    KillSignalResponder killSignalResponder() {
+    MessageResponder killSignalResponder() {
         return new KillSignalResponder();
     }
 
     @Bean
-    HeaterChillerResponder heaterChillerResponder() {
+    MessageResponder heaterChillerResponder() {
         return new HeaterChillerResponder();
     }
 }

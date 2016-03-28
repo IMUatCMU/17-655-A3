@@ -113,16 +113,16 @@ public class MessageManager extends UnicastRemoteObject implements RMIMessageMan
             RequestsServiced++;
 
             if (message.length() == 0) {
-                System.out.println("-------------------------------------------------------------------------------");
-                System.out.println("Number of requests: " + RequestsServiced);
-                System.out.println("Number of registered participants: " + MessageQueueList.size());
-                System.out.println("-------------------------------------------------------------------------------");
+//                System.out.println("-------------------------------------------------------------------------------");
+//                System.out.println("Number of requests: " + RequestsServiced);
+//                System.out.println("Number of registered participants: " + MessageQueueList.size());
+//                System.out.println("-------------------------------------------------------------------------------");
             } else {
-                System.out.println("-------------------------------------------------------------------------------");
-                System.out.println("Message:: " + message);
-                System.out.println("Number of requests: " + RequestsServiced);
-                System.out.println("Number of registered participants: " + MessageQueueList.size());
-                System.out.println("-------------------------------------------------------------------------------");
+//                System.out.println("-------------------------------------------------------------------------------");
+//                System.out.println("Message:: " + message);
+//                System.out.println("Number of requests: " + RequestsServiced);
+//                System.out.println("Number of registered participants: " + MessageQueueList.size());
+//                System.out.println("-------------------------------------------------------------------------------");
             }
         }
     }
