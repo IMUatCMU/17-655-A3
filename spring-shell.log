@@ -1,0 +1,13 @@
+// Spring Shell 1.1.0.RELEASE log opened at 2016-03-27 23:55:00
+temp --low 10 --high 20
+// Spring Shell 1.1.0.RELEASE log opened at 2016-03-27 23:56:04
+help
+exit
+// Spring Shell 1.1.0.RELEASE log closed at 2016-03-27 23:56:27
+// Spring Shell 1.1.0.RELEASE log opened at 2016-03-27 23:57:35
+// Spring Shell 1.1.0.RELEASE log opened at 2016-03-28 00:03:17
+// [failed] humid --low 10 --high 20
+// Spring Shell 1.1.0.RELEASE log opened at 2016-03-28 00:04:01
+// [failed] humid --low 10 --high 20
+// Spring Shell 1.1.0.RELEASE log opened at 2016-03-28 00:04:43
+humid --low 10 --high 20

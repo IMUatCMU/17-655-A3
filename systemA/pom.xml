@@ -9,12 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shared</artifactId>
+    <artifactId>systemA</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.shell</groupId>
-            <artifactId>spring-shell</artifactId>
+            <groupId>org.cmu.17655</groupId>
+            <artifactId>shared</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 
