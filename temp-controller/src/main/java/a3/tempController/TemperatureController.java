@@ -39,7 +39,6 @@ public class TemperatureController implements InitializingBean {
 
         boolean done = false;
         while (!done) {
-            boolean handled = false;
             MessageQueue messageQueue;
             try {
                 messageQueue = messageManager.GetMessageQueue();
@@ -53,22 +52,11 @@ public class TemperatureController implements InitializingBean {
                 for (int i = 0; i < size; i++) {
                     Message message = messageQueue.GetMessage();
 
-                    messageWindow.WriteMessage("[DEBUG] got message id: " + message.GetMessageId());
-
                     for (MonitorMessageHandler handler : messageHandlers) {
                         if (handler.canHandleMessageWithId(message.GetMessageId())) {
                             handler.handleMessage(message);
-                            handled = true;
                         }
                     }
-
-//                    if (!handled) {
-//                        try {
-//                            messageManager.SendMessage(message);
-//                        } catch (Exception ex) {
-//                            messageWindow.WriteMessage("Post back error: " + ex.getMessage());
-//                        }
-//                    }
                 }
             } catch (MonitorQuitSignal signal) {
                 done = true;

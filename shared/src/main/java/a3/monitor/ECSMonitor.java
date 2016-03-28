@@ -31,11 +31,9 @@ public class ECSMonitor extends Thread {
 
         displayStartInformation();
 
-        boolean done = false;
         int delay = 1000;
 
-        while (!done) {
-            boolean handled = false;
+        while (true) {
             MessageQueue messageQueue = getMessageQueue();
             if (messageQueue == null)
                 break;
@@ -45,22 +43,11 @@ public class ECSMonitor extends Thread {
                 for (int i = 0; i < size; i++) {
                     Message message = messageQueue.GetMessage();
 
-                    messageWindow.WriteMessage("[DEBUG] got message id: " + message.GetMessageId());
-
                     for (MonitorMessageHandler monitorMessageHandler: messageHandlers) {
                         if (monitorMessageHandler.canHandleMessageWithId(message.GetMessageId())) {
                             monitorMessageHandler.handleMessage(message);
-                            handled = true;
                         }
                     }
-
-//                    if (!handled) {
-//                        try {
-//                            messageManager.SendMessage(message);
-//                        } catch (Exception ex) {
-//                            messageWindow.WriteMessage("Post back error: " + ex.getMessage());
-//                        }
-//                    }
                 }
             } catch (MonitorQuitSignal signal) {
                 try {
@@ -68,7 +55,6 @@ public class ECSMonitor extends Thread {
                 } catch (Exception ex) {
                     messageWindow.WriteMessage("Error unregistering: " + ex.getMessage());
                 } finally {
-                    done = true;
                     System.out.println("Shutting down...");
                     System.exit(1);
                 }
