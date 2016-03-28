@@ -30,7 +30,17 @@
 
     <!--Handler-->
     <bean id="temperatureMonitorMessageHandler" class="a3.monitor.TemperatureMonitorMessageHandler" />
+
     <bean id="humidityMonitorMessageHandler" class="a3.monitor.HumidityMonitorMessageHandler" />
+
+    <bean id="quitMonitorMessageHandler" class="a3.monitor.QuitMonitorMessageHandler">
+        <property name="indicators">
+            <list>
+                <ref bean="tempIndicator" />
+                <ref bean="humidIndicator" />
+            </list>
+        </property>
+    </bean>
 
     <bean id="monitor" class="a3.monitor.ECSMonitor" init-method="start" destroy-method="interrupt">
         <property name="monitorUIs">
@@ -44,6 +54,7 @@
             <list>
                 <ref bean="temperatureMonitorMessageHandler" />
                 <ref bean="humidityMonitorMessageHandler" />
+                <ref bean="quitMonitorMessageHandler" />
             </list>
         </property>
     </bean>

@@ -68,13 +68,28 @@ public class ECSMonitor extends Thread implements ApplicationContextAware {
             if (messageQueue == null)
                 break;
 
-            IntStream.of(messageQueue.GetSize()).forEach(value -> {
-                Message message = messageQueue.GetMessage();
-                messageHandlers.forEach(monitorMessageHandler -> {
-                    if (monitorMessageHandler.canHandleMessageWithId(message.GetMessageId()))
-                        monitorMessageHandler.handleMessage(message);
+            try {
+                IntStream.of(messageQueue.GetSize()).forEach(value -> {
+                    Message message = messageQueue.GetMessage();
+                    messageHandlers.forEach(monitorMessageHandler -> {
+                        if (monitorMessageHandler.canHandleMessageWithId(message.GetMessageId()))
+                            monitorMessageHandler.handleMessage(message);
+                    });
                 });
-            });
+            } catch (MonitorQuitSignal signal) {
+                try {
+                    messageManager.UnRegister();
+                } catch (Exception ex) {
+                    messageWindow.WriteMessage("Error unregistering: " + ex.getMessage());
+                    done = true;
+                }
+            }
+
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException ex) {
+                messageWindow.WriteMessage("System error:: " + ex.getMessage());
+            }
         }
     }
 
