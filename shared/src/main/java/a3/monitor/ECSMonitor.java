@@ -43,7 +43,6 @@ public class ECSMonitor extends Thread {
                 for (int i = 0; i < messageQueue.GetSize(); i++) {
                     Message message = messageQueue.GetMessage();
                     messageHandlers.forEach(monitorMessageHandler -> {
-                        System.out.println(monitorMessageHandler);
                         if (monitorMessageHandler.canHandleMessageWithId(message.GetMessageId()))
                             monitorMessageHandler.handleMessage(message);
                     });
@@ -53,7 +52,10 @@ public class ECSMonitor extends Thread {
                     messageManager.UnRegister();
                 } catch (Exception ex) {
                     messageWindow.WriteMessage("Error unregistering: " + ex.getMessage());
+                } finally {
                     done = true;
+                    System.out.println("Shutting down...");
+                    System.exit(1);
                 }
             }
 

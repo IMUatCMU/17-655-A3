@@ -1,6 +1,7 @@
 package a3.monitor;
 
 import a3.message.Message;
+import a3.message.MessageManagerInterface;
 import java.util.List;
 import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,10 @@ public class QuitMonitorMessageHandler implements MonitorMessageHandler {
 
     @Autowired
     private MessageWindow messageWindow;
+
+    @Autowired
+    private MessageManagerInterface messageManager;
+
     private List<Indicator> indicators;
 
     @Override
