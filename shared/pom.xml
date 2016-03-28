@@ -16,6 +16,11 @@
             <groupId>org.springframework.shell</groupId>
             <artifactId>spring-shell</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.cmu.17655</groupId>
+            <artifactId>message</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>

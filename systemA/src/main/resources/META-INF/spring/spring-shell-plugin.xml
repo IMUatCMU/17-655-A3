@@ -7,4 +7,44 @@
 
     <context:component-scan base-package="a3" />
 
+    <!--UI-->
+
+    <bean id="messageWindow" class="a3.monitor.MessageWindow">
+        <constructor-arg index="0" value="ECS Monitoring Console" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="0" />
+    </bean>
+
+    <bean id="tempIndicator" class="a3.monitor.Indicator">
+        <constructor-arg index="0" value="Temp UNK" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
+        <constructor-arg index="2" value="0" />
+    </bean>
+
+    <bean id="humidIndicator" class="a3.monitor.Indicator">
+        <constructor-arg index="0" value="HUMI UNK" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
+        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.getHeight()}" />
+        <constructor-arg index="3" value="2" />
+    </bean>
+
+    <!--Handler-->
+    <bean id="temperatureMonitorMessageHandler" class="a3.monitor.TemperatureMonitorMessageHandler" />
+    <bean id="humidityMonitorMessageHandler" class="a3.monitor.HumidityMonitorMessageHandler" />
+
+    <bean id="monitor" class="a3.monitor.ECSMonitor" init-method="start" destroy-method="interrupt">
+        <property name="monitorUIs">
+            <list>
+                <ref bean="messageWindow" />
+                <ref bean="tempIndicator" />
+                <ref bean="humidIndicator" />
+            </list>
+        </property>
+        <property name="messageHandlers">
+            <list>
+                <ref bean="temperatureMonitorMessageHandler" />
+                <ref bean="humidityMonitorMessageHandler" />
+            </list>
+        </property>
+    </bean>
 </beans>
