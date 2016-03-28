@@ -12,6 +12,7 @@
         <module>message</module>
         <module>systemA</module>
         <module>temp-sensor</module>
+        <module>humidity-sensor</module>
     </modules>
     <packaging>pom</packaging>
 

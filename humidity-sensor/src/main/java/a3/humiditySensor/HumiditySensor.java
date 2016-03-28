@@ -1,4 +1,4 @@
-package a3.tempSensor;
+package a3.humiditySensor;
 
 import a3.message.Message;
 import a3.message.MessageManagerInterface;
@@ -27,7 +27,7 @@ import static a3.assist.RandomHelper.getRandomNumber;
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"a3"})
 @ImportResource("classpath:config.xml")
-public class TemperatureSensor implements InitializingBean {
+public class HumiditySensor implements InitializingBean {
 
     @Autowired
     private MessageWindow messageWindow;
@@ -41,19 +41,19 @@ public class TemperatureSensor implements InitializingBean {
     private void start() {
         displayStartInformation();
 
-        messageWindow.WriteMessage("Initializing Temperature Simulation::");
-        Float temp = 50.00f, driftValue;
+        messageWindow.WriteMessage("Initializing Humidity Simulation::");
+        Float humidity = 100.00f * getRandomNumber(), driftValue;
         if (coinToss()) {
             driftValue = getRandomNumber() * -1.0f;
         } else {
             driftValue = getRandomNumber();
         }
-        messageWindow.WriteMessage("   Initial Temperature Set:: " + temp);
+        messageWindow.WriteMessage("   Initial Humidity Set:: " + humidity);
         messageWindow.WriteMessage("   Drift Value Set:: " + driftValue);
 
         messageWindow.WriteMessage("Beginning Simulation... ");
-        postTemperature(temp);
-        messageWindow.WriteMessage("Current Temperature::  " + temp + " F");
+        postHumidity(humidity);
+        messageWindow.WriteMessage("Current Humidity::  " + humidity + " %");
 
         boolean done = false;
         while (!done) {
@@ -71,7 +71,7 @@ public class TemperatureSensor implements InitializingBean {
 
                     for (MessageResponder responder : messageResponders) {
                         if (responder.canRespondToMessageWithId(message.GetMessageId())) {
-                            temp = (Float) responder.respondToMessage(message, Arrays.asList(temp, driftValue));
+                            humidity = (Float) responder.respondToMessage(message, Arrays.asList(humidity, driftValue));
                         }
                     }
                 }
@@ -93,16 +93,6 @@ public class TemperatureSensor implements InitializingBean {
         }
     }
 
-    private void postTemperature(Float temp) {
-        Message msg = new Message(1, String.valueOf(temp));
-
-        try {
-            messageManager.SendMessage(msg);
-        } catch (Exception e) {
-            System.out.println("Error Posting Temperature:: " + e);
-        }
-    }
-
     private void displayStartInformation() {
         messageWindow.WriteMessage("Registered with the message manager.");
         try {
@@ -113,12 +103,22 @@ public class TemperatureSensor implements InitializingBean {
         }
     }
 
+    private void postHumidity(Float humidity) {
+        Message msg = new Message(2, String.valueOf(humidity));
+
+        try {
+            messageManager.SendMessage(msg);
+        } catch (Exception e) {
+            System.out.println("Error Posting Humidity:: " + e);
+        }
+    }
+
     @Override
     public void afterPropertiesSet() throws Exception {
         this.start();
     }
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(TemperatureSensor.class).headless(false).run(args);
+        new SpringApplicationBuilder(HumiditySensor.class).headless(false).run(args);
     }
 }
