@@ -4,8 +4,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.LayoutManager;
 import java.awt.Toolkit;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import org.springframework.beans.factory.InitializingBean;
 
 /**
@@ -19,6 +24,8 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
     private int UpperLeftY;
     private String MessageLabel;
     private Color IluminationColor = Color.black;
+    private Color oldIluminationColor;
+
     private Color TextColor = Color.black;
     private JFrame IndicatorWindow;
 
@@ -35,6 +42,7 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
     }
 
     public Indicator(String Label, float Xpos, float Ypos) {
+
         MessageLabel = Label;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -332,6 +340,8 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
 
         MessageLabel = s;
 
+        this.setBackground(IluminationColor);
+
         repaint();
 
     } // SetLampColor
@@ -399,18 +409,44 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
      *
      * Exceptions: none
      ****************************************************************************/
-
+    @Override
     public void paint(Graphics g) {
         super.paint(g);
+
+        this.setBackground(IluminationColor);
 
         FontMetrics fm = g.getFontMetrics();
 
         int xLabelPosition = (int) (Height * 0.5) - (int) (fm.stringWidth(MessageLabel) * 0.5);
-        int yLabelPosition = (int) (Height * 0.90);
-        g.setColor(IluminationColor);
-        g.fillRoundRect((int) (Height * 0.15), (int) (Height * 0.35), (int) (Height * 0.70), (int) (Height * 0.40), (int) (Height * 0.20), (int) (Height * 0.20));
-        g.setColor(TextColor);
+        int yLabelPosition = (int) (Height * 0.55);
+
         g.drawString(MessageLabel, xLabelPosition, yLabelPosition);
 
+        oldIluminationColor = IluminationColor;
     } // paint
+
+    private static class BulbAndText extends JPanel {
+
+        private JLabel bulb;
+        private JLabel text;
+
+        public BulbAndText(Color initialColor, String text) {
+            super();
+            this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+
+            this.bulb = new JLabel();
+            this.bulb.setSize(50, 50);
+            this.bulb.setBackground(initialColor);
+            this.add(this.bulb);
+
+            this.text = new JLabel(text);
+            this.add(this.text);
+
+            this.setVisible(true);
+        }
+
+        public void changeColor(Color color) {
+            this.bulb.setBackground(color);
+        }
+    }
 }
