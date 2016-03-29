@@ -1,5 +1,6 @@
 package a3.intrusionSensor;
 
+import a3.device.Device;
 import a3.message.Message;
 import a3.message.MessageManagerInterface;
 import a3.message.MessageQueue;
@@ -7,6 +8,7 @@ import a3.monitor.MessageWindow;
 import a3.sensor.MessageResponder;
 import a3.sensor.SensorQuitSignal;
 import java.util.List;
+import java.util.UUID;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -26,7 +28,9 @@ import static a3.intrusionSensor.IntrusionContext.*;
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"a3"})
 @ImportResource("classpath:config.xml")
-public class IntrusionSensor implements InitializingBean {
+public class IntrusionSensor extends Device implements InitializingBean {
+
+    private static final String _UUID = UUID.randomUUID().toString();
 
     @Autowired
     private MessageWindow messageWindow;
@@ -37,7 +41,23 @@ public class IntrusionSensor implements InitializingBean {
     @Autowired
     private List<MessageResponder> messageResponders;
 
+    @Override
+    protected MessageManagerInterface messageManager() {
+        return this.messageManager;
+    }
+
+    @Override
+    protected String deviceId() {
+        return "intrusion-sensor@" + _UUID;
+    }
+
+    @Override
+    protected String description() {
+        return "Intrusion Sensor";
+    }
+
     private void start() {
+        super.registerAndStartHeartbeat();
         displayStartInformation();
 
         messageWindow.WriteMessage("Initializing Intrusion Simulation::");

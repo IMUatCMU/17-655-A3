@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="a3"/>
+
+    <!--UI-->
+
+    <bean id="messageWindow" class="a3.monitor.MessageWindow">
+        <constructor-arg index="0" value="ECS Monitoring Console" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="0" />
+    </bean>
+
+    <bean id="tempIndicator" class="a3.monitor.Indicator" depends-on="messageWindow">
+        <constructor-arg index="0" value="Temp UNK" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
+        <constructor-arg index="2" value="0" />
+        <constructor-arg index="3" value="2" />
+    </bean>
+
+    <bean id="humidIndicator" class="a3.monitor.Indicator" depends-on="tempIndicator">
+        <constructor-arg index="0" value="HUMI UNK" />
+        <constructor-arg index="1" value="#{tempIndicator.GetX() + tempIndicator.Width()}" />
+        <constructor-arg index="2" value="0" />
+        <constructor-arg index="3" value="2" />
+    </bean>
+
+    <bean id="windowIndicator" class="a3.monitor.Indicator" depends-on="humidIndicator">
+        <constructor-arg index="0" value="WINDOW NORM" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
+        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.Height()}" />
+        <constructor-arg index="3" value="1" />
+    </bean>
+
+    <bean id="doorIndicator" class="a3.monitor.Indicator" depends-on="windowIndicator">
+        <constructor-arg index="0" value="DOOR NORM" />
+        <constructor-arg index="1" value="#{tempIndicator.GetX() + tempIndicator.Width()}" />
+        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.Height()}" />
+        <constructor-arg index="3" value="1" />
+    </bean>
+
+    <bean id="motionIndicator" class="a3.monitor.Indicator" depends-on="doorIndicator">
+        <constructor-arg index="0" value="MOTION NORM" />
+        <constructor-arg index="1" value="#{doorIndicator.GetX() + doorIndicator.Width()}" />
+        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.Height()}" />
+        <constructor-arg index="3" value="1" />
+    </bean>
+
+    <bean id="fireIndicator" class="a3.monitor.Indicator" depends-on="motionIndicator">
+        <constructor-arg index="0" value="NO FIRE" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
+        <constructor-arg index="2" value="#{windowIndicator.GetY() + windowIndicator.Height()}" />
+        <constructor-arg index="3" value="0" />
+    </bean>
+
+    <bean id="heartBeatConsole" class="a3.systemC.core.HeartBeatConsole">
+        <constructor-arg index="0" value="Device Status" />
+        <constructor-arg index="1" value="0.8" />
+        <constructor-arg index="2" value="0.1" />
+    </bean>
+
+    <!--Handler-->
+    <bean id="temperatureMonitorMessageHandler" class="a3.monitor.TemperatureMonitorMessageHandler" />
+
+    <bean id="humidityMonitorMessageHandler" class="a3.monitor.HumidityMonitorMessageHandler" />
+
+    <bean id="intrusionSensorStatusMonitorMessageHandler" class="a3.systemA.core.IntrusionSensorStatusMonitorMessageHandler" />
+
+    <bean id="intrusionAlarmControlMonitorMessageHandler" class="a3.systemA.core.IntrusionAlarmControlMonitorMessageHandler" />
+
+    <bean id="fireSensorReportHandler" class="a3.systemB.core.FireSensorReportHandler" />
+
+    <bean id="quitMonitorMessageHandler" class="a3.monitor.QuitMonitorMessageHandler">
+        <property name="indicators">
+            <list>
+                <ref bean="tempIndicator" />
+                <ref bean="humidIndicator" />
+                <ref bean="windowIndicator" />
+                <ref bean="doorIndicator" />
+                <ref bean="motionIndicator" />
+                <ref bean="fireIndicator" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="registrationHandler" class="a3.systemC.core.RegistrationHandler" />
+
+    <bean id="heartbeatHandler" class="a3.systemC.core.HeartbeatHandler" />
+
+    <bean id="unregisterationHandler" class="a3.systemC.core.UnregisterationHandler" />
+
+    <!-- MessageManager -->
+    <bean id="messageManager" class="a3.assist.MessageManagerInterfaceFactoryBean">
+        <constructor-arg index="0" value="#{systemProperties['ip'] ?: 'localhost'}" />
+    </bean>
+
+    <bean id="monitor" class="a3.monitor.ECSMonitor" init-method="start" destroy-method="interrupt">
+        <property name="monitorUIs">
+            <list>
+                <ref bean="messageWindow" />
+                <ref bean="tempIndicator" />
+                <ref bean="humidIndicator" />
+                <ref bean="windowIndicator" />
+                <ref bean="doorIndicator" />
+                <ref bean="motionIndicator" />
+                <ref bean="fireIndicator" />
+            </list>
+        </property>
+        <property name="messageHandlers">
+            <list>
+                <ref bean="temperatureMonitorMessageHandler" />
+                <ref bean="humidityMonitorMessageHandler" />
+                <ref bean="intrusionSensorStatusMonitorMessageHandler" />
+                <ref bean="intrusionAlarmControlMonitorMessageHandler" />
+                <ref bean="fireSensorReportHandler" />
+                <ref bean="quitMonitorMessageHandler" />
+            </list>
+        </property>
+        <property name="messageManager" ref="messageManager" />
+    </bean>
+
+    <bean id="heartBeatMonitor" class="a3.monitor.ECSMonitor" init-method="start" destroy-method="interrupt">
+        <property name="monitorUIs">
+            <list>
+                <ref bean="heartBeatConsole" />
+            </list>
+        </property>
+        <property name="messageHandlers">
+            <list>
+                <ref bean="registrationHandler" />
+                <ref bean="heartbeatHandler" />
+                <ref bean="unregisterationHandler" />
+            </list>
+        </property>
+        <property name="messageManager" ref="messageManager" />
+    </bean>
+
+    <bean id="deviceRegistry" class="a3.systemC.core.DeviceRegistry" />
+</beans>

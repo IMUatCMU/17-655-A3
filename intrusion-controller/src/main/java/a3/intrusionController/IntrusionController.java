@@ -1,5 +1,6 @@
 package a3.intrusionController;
 
+import a3.device.Device;
 import a3.message.Message;
 import a3.message.MessageManagerInterface;
 import a3.message.MessageQueue;
@@ -7,6 +8,7 @@ import a3.monitor.MessageWindow;
 import a3.monitor.MonitorMessageHandler;
 import a3.monitor.MonitorQuitSignal;
 import java.util.List;
+import java.util.UUID;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -23,7 +25,9 @@ import org.springframework.context.annotation.ImportResource;
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"a3"})
 @ImportResource("classpath:config.xml")
-public class IntrusionController implements InitializingBean {
+public class IntrusionController extends Device implements InitializingBean {
+
+    private static final String _UUID = UUID.randomUUID().toString();
 
     @Autowired
     private MessageWindow messageWindow;
@@ -34,13 +38,24 @@ public class IntrusionController implements InitializingBean {
     @Autowired
     List<MonitorMessageHandler> messageHandlers;
 
-    private void start() {
-        displayStartInformation();
+    @Override
+    protected MessageManagerInterface messageManager() {
+        return this.messageManager;
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
-        this.start();
+    protected String deviceId() {
+        return "intrusion-controller@" + _UUID;
+    }
+
+    @Override
+    protected String description() {
+        return "Intrusion Controller";
+    }
+
+    private void start() {
+        super.registerAndStartHeartbeat();
+        displayStartInformation();
 
         boolean done = false;
         while (!done) {
@@ -79,6 +94,11 @@ public class IntrusionController implements InitializingBean {
                 messageWindow.WriteMessage("Sleep error:: " + e);
             }
         }
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        this.start();
     }
 
     private void displayStartInformation() {

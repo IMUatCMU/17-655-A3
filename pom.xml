@@ -23,6 +23,8 @@
         <module>fire-sensor</module>
         <module>fire-alarm-controller</module>
         <module>sprinkler-controller</module>
+        <module>systemC-core</module>
+        <module>systemC</module>
     </modules>
     <packaging>pom</packaging>
 

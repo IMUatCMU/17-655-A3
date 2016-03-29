@@ -367,10 +367,6 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
 
         } // switch
 
-        displayUI();
-        displayUI();
-        displayUI();
-
     } // SetLampColor
 
     /***************************************************************************

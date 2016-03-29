@@ -1,5 +1,6 @@
 package a3.fireSensor;
 
+import a3.device.Device;
 import a3.message.Message;
 import a3.message.MessageManagerInterface;
 import a3.message.MessageQueue;
@@ -7,6 +8,7 @@ import a3.monitor.MessageWindow;
 import a3.sensor.MessageResponder;
 import a3.sensor.SensorQuitSignal;
 import java.util.List;
+import java.util.UUID;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -23,7 +25,9 @@ import org.springframework.context.annotation.ImportResource;
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"a3"})
 @ImportResource("classpath:config.xml")
-public class FireSensor implements InitializingBean {
+public class FireSensor extends Device implements InitializingBean {
+
+    private static final String _UUID = UUID.randomUUID().toString();
 
     @Autowired
     private MessageWindow messageWindow;
@@ -34,7 +38,23 @@ public class FireSensor implements InitializingBean {
     @Autowired
     private List<MessageResponder> messageResponders;
 
+    @Override
+    protected MessageManagerInterface messageManager() {
+        return this.messageManager;
+    }
+
+    @Override
+    protected String deviceId() {
+        return "fire-sensor@" + _UUID;
+    }
+
+    @Override
+    protected String description() {
+        return "Fire Sensor";
+    }
+
     private void start() {
+        super.registerAndStartHeartbeat();
         displayStartInformation();
 
         messageWindow.WriteMessage("Initializing Fire Simulation::");
