@@ -21,6 +21,7 @@
         <module>systemA-core</module>
         <module>systemB-core</module>
         <module>fire-sensor</module>
+        <module>fire-alarm-controller</module>
     </modules>
     <packaging>pom</packaging>
 

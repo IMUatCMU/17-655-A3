@@ -1,11 +1,11 @@
-package a3.fireSensor;
+package a3.fireAlarm;
 
 import a3.message.Message;
 import a3.message.MessageManagerInterface;
 import a3.message.MessageQueue;
 import a3.monitor.MessageWindow;
-import a3.sensor.MessageResponder;
-import a3.sensor.SensorQuitSignal;
+import a3.monitor.MonitorMessageHandler;
+import a3.monitor.MonitorQuitSignal;
 import java.util.List;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import org.springframework.context.annotation.ImportResource;
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"a3"})
 @ImportResource("classpath:config.xml")
-public class FireSensor implements InitializingBean {
+public class FireAlarmController implements InitializingBean {
 
     @Autowired
     private MessageWindow messageWindow;
@@ -32,14 +32,10 @@ public class FireSensor implements InitializingBean {
     private MessageManagerInterface messageManager;
 
     @Autowired
-    private List<MessageResponder> messageResponders;
+    List<MonitorMessageHandler> messageHandlers;
 
     private void start() {
         displayStartInformation();
-
-        messageWindow.WriteMessage("Initializing Fire Simulation::");
-        FireContext context = new FireContext();
-        messageWindow.WriteMessage("Beginning Simulation... ");
 
         boolean done = false;
         while (!done) {
@@ -56,13 +52,13 @@ public class FireSensor implements InitializingBean {
                 for (int i = 0; i < size; i++) {
                     Message message = messageQueue.GetMessage();
 
-                    for (MessageResponder responder : messageResponders) {
-                        if (responder.canRespondToMessageWithId(message.GetMessageId())) {
-                            responder.respondToMessage(message, context);
+                    for (MonitorMessageHandler handler : messageHandlers) {
+                        if (handler.canHandleMessageWithId(message.GetMessageId())) {
+                            handler.handleMessage(message);
                         }
                     }
                 }
-            } catch (SensorQuitSignal signal) {
+            } catch (MonitorQuitSignal signal) {
                 done = true;
                 try {
                     messageManager.UnRegister();
@@ -72,9 +68,6 @@ public class FireSensor implements InitializingBean {
                 messageWindow.WriteMessage("\n\nSimulation Stopped.");
             }
 
-            displayCurrentStatus(context);
-            postStatus(context);
-
             try {
                 Thread.sleep(2500);
             } catch (Exception e) {
@@ -83,17 +76,9 @@ public class FireSensor implements InitializingBean {
         }
     }
 
-    private void postStatus(FireContext context) {
-        try {
-            Message message = new Message(9, String.valueOf(context.getFireLevel()));
-            messageManager.SendMessage(message);
-        } catch (Exception e) {
-            System.out.println("Error Posting Fire Level:: " + e);
-        }
-    }
-
-    private void displayCurrentStatus(FireContext context) {
-        messageWindow.WriteMessage("Fire Level:: " + context.getFireLevel());
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        this.start();
     }
 
     private void displayStartInformation() {
@@ -106,12 +91,7 @@ public class FireSensor implements InitializingBean {
         }
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        this.start();
-    }
-
     public static void main(String[] args) {
-        new SpringApplicationBuilder(FireSensor.class).headless(false).run(args);
+        new SpringApplicationBuilder(FireAlarmController.class).headless(false).run(args);
     }
 }
