@@ -42,18 +42,19 @@ public class HumiditySensor implements InitializingBean {
         displayStartInformation();
 
         messageWindow.WriteMessage("Initializing Humidity Simulation::");
-        Float humidity = 100.00f * getRandomNumber(), driftValue;
+        HumidityContext context = new HumidityContext();
+        context.setCurrentHumidity(100.00f * getRandomNumber());
         if (coinToss()) {
-            driftValue = getRandomNumber() * -1.0f;
+            context.setDriftValue(getRandomNumber() * -1.0f);
         } else {
-            driftValue = getRandomNumber();
+            context.setDriftValue(getRandomNumber());
         }
-        messageWindow.WriteMessage("   Initial Humidity Set:: " + humidity);
-        messageWindow.WriteMessage("   Drift Value Set:: " + driftValue);
+        messageWindow.WriteMessage("   Initial Humidity Set:: " + context.getCurrentHumidity());
+        messageWindow.WriteMessage("   Drift Value Set:: " + context.getDriftValue());
 
         messageWindow.WriteMessage("Beginning Simulation... ");
-        postHumidity(humidity);
-        messageWindow.WriteMessage("Current Humidity::  " + humidity + " %");
+        postHumidity(context.getCurrentHumidity());
+        messageWindow.WriteMessage("Current Humidity::  " + context.getCurrentHumidity() + " %");
 
         boolean done = false;
         while (!done) {
@@ -66,12 +67,13 @@ public class HumiditySensor implements InitializingBean {
             }
 
             try {
-                for (int i = 0; i < messageQueue.GetSize(); i++) {
+                int size = messageQueue.GetSize();
+                for (int i = 0; i < size; i++) {
                     Message message = messageQueue.GetMessage();
 
                     for (MessageResponder responder : messageResponders) {
                         if (responder.canRespondToMessageWithId(message.GetMessageId())) {
-                            humidity = (Float) responder.respondToMessage(message, Arrays.asList(humidity, driftValue));
+                            responder.respondToMessage(message, context);
                         }
                     }
                 }
@@ -84,6 +86,21 @@ public class HumiditySensor implements InitializingBean {
                 }
                 messageWindow.WriteMessage("\n\nSimulation Stopped.");
             }
+
+            if (context.isHumidifierState()) {
+                context.setCurrentHumidity(context.getCurrentHumidity() + getRandomNumber());
+            }
+
+            if (!context.isHumidifierState() && !context.isDehumidiferState()) {
+                context.setCurrentHumidity(context.getCurrentHumidity() + context.getDriftValue());
+            }
+
+            if (context.isDehumidiferState()) {
+                context.setCurrentHumidity(context.getCurrentHumidity() - getRandomNumber());
+            }
+
+            postHumidity(context.getCurrentHumidity());
+            messageWindow.WriteMessage("Current Humidity::  " + context.getCurrentHumidity() + " %");
 
             try {
                 Thread.sleep(2500);
