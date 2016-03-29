@@ -50,6 +50,13 @@
         <constructor-arg index="3" value="1" />
     </bean>
 
+    <bean id="fireIndicator" class="a3.monitor.Indicator">
+        <constructor-arg index="0" value="NO FIRE" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
+        <constructor-arg index="2" value="#{windowIndicator.GetY() + windowIndicator.Height()}" />
+        <constructor-arg index="3" value="0" />
+    </bean>
+
     <!--Handler-->
     <bean id="temperatureMonitorMessageHandler" class="a3.monitor.TemperatureMonitorMessageHandler" />
 
@@ -59,6 +66,8 @@
 
     <bean id="intrusionAlarmControlMonitorMessageHandler" class="a3.systemA.core.IntrusionAlarmControlMonitorMessageHandler" />
 
+    <bean id="fireSensorReportHandler" class="a3.systemB.core.FireSensorReportHandler" />
+
     <bean id="quitMonitorMessageHandler" class="a3.monitor.QuitMonitorMessageHandler">
         <property name="indicators">
             <list>
@@ -67,6 +76,7 @@
                 <ref bean="windowIndicator" />
                 <ref bean="doorIndicator" />
                 <ref bean="motionIndicator" />
+                <ref bean="fireIndicator" />
             </list>
         </property>
     </bean>
@@ -85,6 +95,7 @@
                 <ref bean="windowIndicator" />
                 <ref bean="doorIndicator" />
                 <ref bean="motionIndicator" />
+                <ref bean="fireIndicator" />
             </list>
         </property>
         <property name="messageHandlers">
@@ -93,6 +104,7 @@
                 <ref bean="humidityMonitorMessageHandler" />
                 <ref bean="intrusionSensorStatusMonitorMessageHandler" />
                 <ref bean="intrusionAlarmControlMonitorMessageHandler" />
+                <ref bean="fireSensorReportHandler" />
                 <ref bean="quitMonitorMessageHandler" />
             </list>
         </property>
