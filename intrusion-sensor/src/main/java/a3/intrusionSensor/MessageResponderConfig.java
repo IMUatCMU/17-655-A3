@@ -1,5 +1,6 @@
 package a3.intrusionSensor;
 
+import a3.sensor.KillSignalResponder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,5 +19,10 @@ public class MessageResponderConfig {
     @Bean
     ControlInformationResponder controlInformationResponder() {
         return new ControlInformationResponder();
+    }
+
+    @Bean
+    KillSignalResponder killSignalResponder() {
+        return new KillSignalResponder();
     }
 }

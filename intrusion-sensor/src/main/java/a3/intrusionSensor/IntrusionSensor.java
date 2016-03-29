@@ -94,8 +94,8 @@ public class IntrusionSensor implements InitializingBean {
     private void displayCurrentStatus(IntrusionContext context) {
         messageWindow.WriteMessage(
                 String.format("Current Status:: Window - %s  Door - %s  Motion - %s",
-                        !context.isDoorArmed() ? "DISARMED" : (context.isDoorStatus() ? "NORMAL" : "BREAK"),
                         !context.isWindowArmed() ? "DISARMED" : (context.isWindowStatus() ? "NORMAL" : "BREAK"),
+                        !context.isDoorArmed() ? "DISARMED" : (context.isDoorStatus() ? "NORMAL" : "BREAK"),
                         !context.isMotionArmed() ? "DISARMED" : (context.isMotionStatus() ? "NORMAL" : "BREAK")
                 ));
     }

@@ -19,13 +19,35 @@
         <constructor-arg index="0" value="Temp UNK" />
         <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
         <constructor-arg index="2" value="0" />
+        <constructor-arg index="3" value="2" />
     </bean>
 
     <bean id="humidIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="HUMI UNK" />
-        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
-        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.getHeight()}" />
+        <constructor-arg index="1" value="#{tempIndicator.GetX() + tempIndicator.Width()}" />
+        <constructor-arg index="2" value="0" />
         <constructor-arg index="3" value="2" />
+    </bean>
+
+    <bean id="windowIndicator" class="a3.monitor.Indicator">
+        <constructor-arg index="0" value="WINDOW NORM" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
+        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.Height()}" />
+        <constructor-arg index="3" value="1" />
+    </bean>
+
+    <bean id="doorIndicator" class="a3.monitor.Indicator">
+        <constructor-arg index="0" value="DOOR NORM" />
+        <constructor-arg index="1" value="#{tempIndicator.GetX() + tempIndicator.Width()}" />
+        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.Height()}" />
+        <constructor-arg index="3" value="1" />
+    </bean>
+
+    <bean id="motionIndicator" class="a3.monitor.Indicator">
+        <constructor-arg index="0" value="MOTION NORM" />
+        <constructor-arg index="1" value="#{doorIndicator.GetX() + doorIndicator.Width()}" />
+        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.Height()}" />
+        <constructor-arg index="3" value="1" />
     </bean>
 
     <!--Handler-->
@@ -33,11 +55,18 @@
 
     <bean id="humidityMonitorMessageHandler" class="a3.monitor.HumidityMonitorMessageHandler" />
 
+    <bean id="intrusionSensorStatusMonitorMessageHandler" class="a3.systemA.IntrusionSensorStatusMonitorMessageHandler" />
+
+    <bean id="intrusionAlarmControlMonitorMessageHandler" class="a3.systemA.IntrusionAlarmControlMonitorMessageHandler" />
+
     <bean id="quitMonitorMessageHandler" class="a3.monitor.QuitMonitorMessageHandler">
         <property name="indicators">
             <list>
                 <ref bean="tempIndicator" />
                 <ref bean="humidIndicator" />
+                <ref bean="windowIndicator" />
+                <ref bean="doorIndicator" />
+                <ref bean="motionIndicator" />
             </list>
         </property>
     </bean>
@@ -53,12 +82,17 @@
                 <ref bean="messageWindow" />
                 <ref bean="tempIndicator" />
                 <ref bean="humidIndicator" />
+                <ref bean="windowIndicator" />
+                <ref bean="doorIndicator" />
+                <ref bean="motionIndicator" />
             </list>
         </property>
         <property name="messageHandlers">
             <list>
                 <ref bean="temperatureMonitorMessageHandler" />
                 <ref bean="humidityMonitorMessageHandler" />
+                <ref bean="intrusionSensorStatusMonitorMessageHandler" />
+                <ref bean="intrusionAlarmControlMonitorMessageHandler" />
                 <ref bean="quitMonitorMessageHandler" />
             </list>
         </property>
