@@ -12,20 +12,20 @@
     </bean>
 
     <bean id="windowAlarm" class="a3.monitor.Indicator">
-        <constructor-arg index="0" value="Humid OFF" />
+        <constructor-arg index="0" value="WINDOW DISARMED" />
         <constructor-arg index="1" value="#{messageWindow.GetX()}" />
         <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
     </bean>
 
     <bean id="doorAlarm" class="a3.monitor.Indicator">
-        <constructor-arg index="0" value="DeHumid OFF" />
-        <constructor-arg index="1" value="#{messageWindow.GetX() + windowIndicator.Width() * 2}" />
+        <constructor-arg index="0" value="DOOR DISARMED" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + windowAlarm.Width() * 2}" />
         <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
     </bean>
 
     <bean id="motionAlarm" class="a3.monitor.Indicator">
-        <constructor-arg index="0" value="DeHumid OFF" />
-        <constructor-arg index="1" value="#{messageWindow.GetX() + windowIndicator.Width() * 2 + doorIndicator.Width() * 2}" />
+        <constructor-arg index="0" value="MOTION DISARMED" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + windowAlarm.Width() * 2 + doorAlarm.Width() * 2}" />
         <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
     </bean>
 
