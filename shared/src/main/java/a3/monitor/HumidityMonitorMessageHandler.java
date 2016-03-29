@@ -20,8 +20,8 @@ public class HumidityMonitorMessageHandler implements MonitorMessageHandler {
     @Resource(name = "humidIndicator")
     private Indicator indicator;
 
-    private Float low;
-    private Float high;
+    private Float low = 0.0f;
+    private Float high = 100.0f;
 
     @Override
     public boolean canHandleMessageWithId(int id) {
