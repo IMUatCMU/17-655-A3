@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="messageWindow" class="a3.monitor.MessageWindow">
+        <constructor-arg index="0" value="Humidity Controller" />
+        <constructor-arg index="1" value="0.0" />
+        <constructor-arg index="2" value="0.6" />
+    </bean>
+
+    <bean id="windowAlarm" class="a3.monitor.Indicator">
+        <constructor-arg index="0" value="Humid OFF" />
+        <constructor-arg index="1" value="#{messageWindow.GetX()}" />
+        <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
+    </bean>
+
+    <bean id="doorAlarm" class="a3.monitor.Indicator">
+        <constructor-arg index="0" value="DeHumid OFF" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + windowIndicator.Width() * 2}" />
+        <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
+    </bean>
+
+    <bean id="motionAlarm" class="a3.monitor.Indicator">
+        <constructor-arg index="0" value="DeHumid OFF" />
+        <constructor-arg index="1" value="#{messageWindow.GetX() + windowIndicator.Width() * 2 + doorIndicator.Width() * 2}" />
+        <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
+    </bean>
+
+    <bean class="a3.intrusionController.StatusInformationHandler" />
+    <bean class="a3.intrusionController.ControlInformationHandler" />
+    <bean id="quitMonitorMessageHandler" class="a3.monitor.QuitMonitorMessageHandler">
+        <property name="indicators">
+            <list>
+                <ref bean="windowAlarm" />
+                <ref bean="doorAlarm" />
+                <ref bean="motionAlarm" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="messageManager" class="a3.assist.MessageManagerInterfaceFactoryBean">
+        <constructor-arg index="0" value="#{systemProperties['ip'] ?: 'localhost'}" />
+    </bean>
+
+</beans>
