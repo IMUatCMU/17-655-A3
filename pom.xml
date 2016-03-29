@@ -15,6 +15,8 @@
         <module>humidity-sensor</module>
         <module>temp-controller</module>
         <module>humidity-controller</module>
+        <module>intrusion-sensor</module>
+        <module>intrusion-controller</module>
     </modules>
     <packaging>pom</packaging>
 
