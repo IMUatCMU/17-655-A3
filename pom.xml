@@ -19,6 +19,8 @@
         <module>intrusion-controller</module>
         <module>systemB</module>
         <module>systemA-core</module>
+        <module>systemB-core</module>
+        <module>fire-sensor</module>
     </modules>
     <packaging>pom</packaging>
 
