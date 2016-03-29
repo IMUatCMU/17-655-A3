@@ -1,4 +1,4 @@
-package a3.systemA;
+package a3.systemA.core;
 
 import a3.message.Message;
 import a3.message.MessageManagerInterface;
