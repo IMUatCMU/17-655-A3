@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>org.cmu.17655</groupId>
-            <artifactId>systemA</artifactId>
+            <artifactId>systemA-core</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
