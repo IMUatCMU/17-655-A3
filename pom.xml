@@ -22,6 +22,7 @@
         <module>systemB-core</module>
         <module>fire-sensor</module>
         <module>fire-alarm-controller</module>
+        <module>sprinkler-controller</module>
     </modules>
     <packaging>pom</packaging>
 

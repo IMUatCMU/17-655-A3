@@ -6,24 +6,26 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="messageWindow" class="a3.monitor.MessageWindow">
-        <constructor-arg index="0" value="Fire Alarm Controller" />
-        <constructor-arg index="1" value="0.0" />
+        <constructor-arg index="0" value="Sprinkler Controller" />
+        <constructor-arg index="1" value="0.4" />
         <constructor-arg index="2" value="0.6" />
     </bean>
 
-    <bean id="fireAlarmIndicator" class="a3.monitor.Indicator">
-        <constructor-arg index="0" value="Fire Alarm OFF" />
+    <bean id="sprinklerIndicator" class="a3.monitor.Indicator" depends-on="messageWindow">
+        <constructor-arg index="0" value="Sprinkler OFF" />
         <constructor-arg index="1" value="#{messageWindow.GetX()}" />
         <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
         <constructor-arg index="3" value="0" />
     </bean>
 
-    <bean id="alarmControlResponder" class="a3.fireAlarm.AlarmControlResponder" />
+    <bean id="sprinklerControlResponder" class="a3.sprinkler.SprinklerControlResponder">
+        <property name="waterLevel" value="5" />
+    </bean>
 
     <bean id="quitMonitorMessageHandler" class="a3.monitor.QuitMonitorMessageHandler">
         <property name="indicators">
             <list>
-                <ref bean="fireAlarmIndicator" />
+                <ref bean="sprinklerIndicator" />
             </list>
         </property>
     </bean>
