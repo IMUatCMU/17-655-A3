@@ -25,26 +25,15 @@ public class HeartBeatConsole extends JFrame implements MonitorUI {
         this.setVisible(true);
     }
 
-    public HeartBeatConsole(String title, float xPos, float yPos) {
+    public HeartBeatConsole(String title, int x, int y, int w, int h) {
         super(title);
         JPanel MessagePanel = new JPanel();
 
         this.getContentPane().setBackground( Color.blue );
-        Toolkit aKit = this.getToolkit();
-        Dimension WindowSize = aKit.getScreenSize();
-
-		int ScreenHeight = WindowSize.height;
-        int ScreenWidth  = WindowSize.width;
-
-        int WindowHeight = (int)(ScreenHeight * 0.30);
-        int WindowWidth  = (int)(ScreenWidth * 0.1);
-
-		int UpperLeftX = (int)(ScreenWidth * xPos);
-        int UpperLeftY = (int)(ScreenHeight * yPos);
-        this.setBounds(UpperLeftX, UpperLeftY, WindowWidth, WindowHeight);
+        this.setBounds(x, y, w, h);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-		MessageArea = new JTextArea((WindowHeight/20),(WindowWidth/12));
+		MessageArea = new JTextArea((h/20),(w/12));
         MessageArea.setLineWrap(true);
 
         JScrollPane MessageAreaScrollPane = new JScrollPane(MessageArea);

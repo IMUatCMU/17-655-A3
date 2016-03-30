@@ -165,6 +165,56 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
      * Exceptions: none
      ****************************************************************************/
 
+    public Indicator(String Label, int InitialColor, int x, int y, int width, int height) {
+        MessageLabel = Label;
+
+        switch (InitialColor) {
+            case 0:
+                IluminationColor = Color.black;
+                break;
+
+            case 1:
+                IluminationColor = Color.green;
+                break;
+
+            case 2:
+                IluminationColor = Color.yellow;
+                break;
+
+            case 3:
+                IluminationColor = Color.red;
+                break;
+
+        } // switch
+
+        this.setResizable(false);
+        this.setUndecorated(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setBackground(Color.lightGray);
+
+        Height = height;
+        UpperLeftX = x;
+        UpperLeftY = y;
+
+        setBounds(x, y, width, height);
+        setVisible(true);
+        Graphics g = getGraphics();
+
+        this.panel = new JPanel();
+        this.panel.setLocation(0, 0);
+        this.panel.setSize(this.getSize());
+        this.add(this.panel);
+
+        this.textLabel = new JLabel(Label);
+        this.textLabel.setForeground(Color.WHITE);
+        this.textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        this.textLabel.setSize(this.panel.getWidth(), this.panel.getHeight() / 3);
+        this.textLabel.setLocation(0, this.panel.getHeight() / 3);
+        this.panel.add(this.textLabel);
+
+        render();
+    }
+
     public Indicator(String Label, float Xpos, float Ypos, int InitialColor) {
         MessageLabel = Label;
 
@@ -304,7 +354,8 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
     } // constructor
 
     private void render() {
-        this.panel.setBackground(IluminationColor);
+        if (this.panel != null)
+            this.panel.setBackground(IluminationColor);
 
         if (this.textLabel != null) {
             this.textLabel.setText(MessageLabel);

@@ -1,5 +1,6 @@
 package a3.monitor;
 
+import a3.message.Message;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -47,6 +48,32 @@ public class MessageWindow implements MonitorUI {
      * Exceptions: none
      *
      ****************************************************************************/
+
+    public MessageWindow(String title, int x, int y, int width, int height) {
+        MessageWindow = new JFrame(title);
+        JPanel MessagePanel = new JPanel();
+
+        MessageWindow.getContentPane().setBackground( Color.blue );
+        Toolkit aKit = MessageWindow.getToolkit();
+
+		WindowHeight = height;
+        WindowWidth  = width;
+
+        UpperLeftX = x;
+        UpperLeftY = y;
+        MessageWindow.setBounds(x, y, width, height);
+        MessageWindow.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+		MessageArea= new JTextArea((WindowHeight/20), (WindowWidth/12));
+        MessageArea.setLineWrap(true);
+
+        JScrollPane MessageAreaScrollPane = new JScrollPane(MessageArea);
+
+        MessageWindow.add(MessagePanel);
+        MessagePanel.add(MessageAreaScrollPane);
+
+        MessageWindow.setVisible(true);
+    }
 
     public MessageWindow(String Title, float Xpos, float Ypos)
     {

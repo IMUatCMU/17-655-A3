@@ -6,27 +6,38 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="messageWindow" class="a3.monitor.MessageWindow">
-        <constructor-arg index="0" value="Humidity Controller" />
-        <constructor-arg index="1" value="0.0" />
-        <constructor-arg index="2" value="0.6" />
+        <constructor-arg index="0" value="Intrusion Controller" />
+        <constructor-arg index="1" value="800" />
+        <constructor-arg index="2" value="450" />
+        <constructor-arg index="3" value="450" />
+        <constructor-arg index="4" value="200" />
     </bean>
 
     <bean id="windowAlarm" class="a3.monitor.Indicator">
-        <constructor-arg index="0" value="WINDOW DISARMED" />
-        <constructor-arg index="1" value="#{messageWindow.GetX()}" />
-        <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
+        <constructor-arg index="0" value="WIND ALARM OFF" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="800" />
+        <constructor-arg index="3" value="650" />
+        <constructor-arg index="4" value="150" />
+        <constructor-arg index="5" value="50" />
     </bean>
 
     <bean id="doorAlarm" class="a3.monitor.Indicator">
-        <constructor-arg index="0" value="DOOR DISARMED" />
-        <constructor-arg index="1" value="#{messageWindow.GetX() + windowAlarm.Width() * 2}" />
-        <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
+        <constructor-arg index="0" value="DOOR ALARM OFF" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="950" />
+        <constructor-arg index="3" value="650" />
+        <constructor-arg index="4" value="150" />
+        <constructor-arg index="5" value="50" />
     </bean>
 
     <bean id="motionAlarm" class="a3.monitor.Indicator">
-        <constructor-arg index="0" value="MOTION DISARMED" />
-        <constructor-arg index="1" value="#{messageWindow.GetX() + windowAlarm.Width() * 2 + doorAlarm.Width() * 2}" />
-        <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
+        <constructor-arg index="0" value="MOTN ALARM OFF" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="1100" />
+        <constructor-arg index="3" value="650" />
+        <constructor-arg index="4" value="150" />
+        <constructor-arg index="5" value="50" />
     </bean>
 
     <bean class="a3.intrusionController.StatusInformationHandler" />

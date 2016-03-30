@@ -13,54 +13,70 @@
         <constructor-arg index="0" value="ECS Monitoring Console" />
         <constructor-arg index="1" value="0" />
         <constructor-arg index="2" value="0" />
+        <constructor-arg index="3" value="800" />
+        <constructor-arg index="4" value="300" />
     </bean>
 
-    <bean id="tempIndicator" class="a3.monitor.Indicator" depends-on="messageWindow">
+    <bean id="tempIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="Temp UNK" />
-        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
-        <constructor-arg index="2" value="0" />
-        <constructor-arg index="3" value="2" />
+        <constructor-arg index="1" value="2" />
+        <constructor-arg index="2" value="800" />
+        <constructor-arg index="3" value="50" />
+        <constructor-arg index="4" value="100" />
+        <constructor-arg index="5" value="100" />
     </bean>
 
-    <bean id="humidIndicator" class="a3.monitor.Indicator" depends-on="tempIndicator">
+    <bean id="humidIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="HUMI UNK" />
-        <constructor-arg index="1" value="#{tempIndicator.GetX() + tempIndicator.Width()}" />
-        <constructor-arg index="2" value="0" />
-        <constructor-arg index="3" value="2" />
+        <constructor-arg index="1" value="2" />
+        <constructor-arg index="2" value="900" />
+        <constructor-arg index="3" value="50" />
+        <constructor-arg index="4" value="100" />
+        <constructor-arg index="5" value="100" />
     </bean>
 
-    <bean id="windowIndicator" class="a3.monitor.Indicator" depends-on="humidIndicator">
+    <bean id="windowIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="WINDOW NORM" />
-        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
-        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.Height()}" />
-        <constructor-arg index="3" value="1" />
+        <constructor-arg index="1" value="1" />
+        <constructor-arg index="2" value="800" />
+        <constructor-arg index="3" value="150" />
+        <constructor-arg index="4" value="100" />
+        <constructor-arg index="5" value="100" />
     </bean>
 
-    <bean id="doorIndicator" class="a3.monitor.Indicator" depends-on="windowIndicator">
+    <bean id="doorIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="DOOR NORM" />
-        <constructor-arg index="1" value="#{tempIndicator.GetX() + tempIndicator.Width()}" />
-        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.Height()}" />
-        <constructor-arg index="3" value="1" />
+        <constructor-arg index="1" value="1" />
+        <constructor-arg index="2" value="900" />
+        <constructor-arg index="3" value="150" />
+        <constructor-arg index="4" value="100" />
+        <constructor-arg index="5" value="100" />
     </bean>
 
-    <bean id="motionIndicator" class="a3.monitor.Indicator" depends-on="doorIndicator">
+    <bean id="motionIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="MOTION NORM" />
-        <constructor-arg index="1" value="#{doorIndicator.GetX() + doorIndicator.Width()}" />
-        <constructor-arg index="2" value="#{tempIndicator.GetY() + tempIndicator.Height()}" />
-        <constructor-arg index="3" value="1" />
+        <constructor-arg index="1" value="1" />
+        <constructor-arg index="2" value="1000" />
+        <constructor-arg index="3" value="150" />
+        <constructor-arg index="4" value="100" />
+        <constructor-arg index="5" value="100" />
     </bean>
 
-    <bean id="fireIndicator" class="a3.monitor.Indicator" depends-on="motionIndicator">
+    <bean id="fireIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="NO FIRE" />
-        <constructor-arg index="1" value="#{messageWindow.GetX() + messageWindow.Width()}" />
-        <constructor-arg index="2" value="#{windowIndicator.GetY() + windowIndicator.Height()}" />
-        <constructor-arg index="3" value="0" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="800" />
+        <constructor-arg index="3" value="250" />
+        <constructor-arg index="4" value="100" />
+        <constructor-arg index="5" value="100" />
     </bean>
 
     <bean id="heartBeatConsole" class="a3.systemC.core.HeartBeatConsole">
         <constructor-arg index="0" value="Device Status" />
-        <constructor-arg index="1" value="0.8" />
-        <constructor-arg index="2" value="0.1" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="300" />
+        <constructor-arg index="3" value="800" />
+        <constructor-arg index="4" value="200" />
     </bean>
 
     <!--Handler-->

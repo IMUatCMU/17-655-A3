@@ -7,8 +7,10 @@
 
     <bean id="messageWindow" class="a3.monitor.MessageWindow">
         <constructor-arg index="0" value="Humidity Sensor" />
-        <constructor-arg index="1" value="0.5" />
-        <constructor-arg index="2" value="0.3" />
+        <constructor-arg index="1" value="1100" />
+        <constructor-arg index="2" value="250" />
+        <constructor-arg index="3" value="600" />
+        <constructor-arg index="4" value="200" />
     </bean>
 
     <bean id="messageManager" class="a3.assist.MessageManagerInterfaceFactoryBean">

@@ -7,20 +7,28 @@
 
     <bean id="messageWindow" class="a3.monitor.MessageWindow">
         <constructor-arg index="0" value="Temperature Controller" />
-        <constructor-arg index="1" value="0.0" />
-        <constructor-arg index="2" value="0.3" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="550" />
+        <constructor-arg index="3" value="600" />
+        <constructor-arg index="4" value="200" />
     </bean>
 
     <bean id="chillerIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="Chiller OFF" />
-        <constructor-arg index="1" value="#{messageWindow.GetX()}" />
-        <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="600" />
+        <constructor-arg index="3" value="550" />
+        <constructor-arg index="4" value="100" />
+        <constructor-arg index="5" value="100" />
     </bean>
 
     <bean id="heaterIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="Heater OFF" />
-        <constructor-arg index="1" value="#{messageWindow.GetX() + chillerIndicator.Width() * 2}" />
-        <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="600" />
+        <constructor-arg index="3" value="650" />
+        <constructor-arg index="4" value="100" />
+        <constructor-arg index="5" value="100" />
     </bean>
 
     <bean id="temperatureControlRelayHandler" class="a3.tempController.TemperatureControlRelayHandler" />

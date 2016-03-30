@@ -7,15 +7,19 @@
 
     <bean id="messageWindow" class="a3.monitor.MessageWindow">
         <constructor-arg index="0" value="Fire Alarm Controller" />
-        <constructor-arg index="1" value="0.0" />
-        <constructor-arg index="2" value="0.6" />
+        <constructor-arg index="1" value="800" />
+        <constructor-arg index="2" value="700" />
+        <constructor-arg index="3" value="450" />
+        <constructor-arg index="4" value="200" />
     </bean>
 
     <bean id="fireAlarmIndicator" class="a3.monitor.Indicator">
         <constructor-arg index="0" value="Fire Alarm OFF" />
-        <constructor-arg index="1" value="#{messageWindow.GetX()}" />
-        <constructor-arg index="2" value="#{messageWindow.GetY() + messageWindow.Height()}" />
-        <constructor-arg index="3" value="0" />
+        <constructor-arg index="1" value="0" />
+        <constructor-arg index="2" value="1250" />
+        <constructor-arg index="3" value="700" />
+        <constructor-arg index="4" value="100" />
+        <constructor-arg index="5" value="100" />
     </bean>
 
     <bean id="alarmControlResponder" class="a3.fireAlarm.AlarmControlResponder" />
