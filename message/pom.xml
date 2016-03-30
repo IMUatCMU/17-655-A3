@@ -26,6 +26,8 @@
                             <mainClass>a3.message.MessageManager</mainClass>
                         </manifest>
                     </archive>
+                    <finalName>${project.artifactId}</finalName>
+                    <outputDirectory>${basedir}/../distribution/jars</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
