@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -28,6 +29,9 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
 
     private Color TextColor = Color.black;
     private JFrame IndicatorWindow;
+
+    private JPanel panel;
+    private JLabel textLabel;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -73,6 +77,20 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
         setVisible(true);
         Graphics g = getGraphics();
 
+        this.panel = new JPanel();
+        this.panel.setLocation(0, 0);
+        this.panel.setSize(this.getSize());
+        this.add(this.panel);
+
+        this.textLabel = new JLabel(Label);
+        this.textLabel.setForeground(Color.WHITE);
+        this.textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        this.textLabel.setSize(this.panel.getWidth(), this.panel.getHeight() / 3);
+        this.textLabel.setLocation(0, this.panel.getHeight() / 3);
+        this.panel.add(this.textLabel);
+
+        render();
+
     } // constructor
 
     /***************************************************************************
@@ -114,6 +132,20 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
         setBounds(Xpos, Ypos, Height, Height);
         setVisible(true);
         Graphics g = getGraphics();
+
+        this.panel = new JPanel();
+        this.panel.setLocation(0, 0);
+        this.panel.setSize(this.getSize());
+        this.add(this.panel);
+
+        this.textLabel = new JLabel(Label);
+        this.textLabel.setForeground(Color.WHITE);
+        this.textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        this.textLabel.setSize(this.panel.getWidth(), this.panel.getHeight() / 3);
+        this.textLabel.setLocation(0, this.panel.getHeight() / 3);
+        this.panel.add(this.textLabel);
+
+        render();
 
     } // constructor
 
@@ -180,6 +212,20 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
         setVisible(true);
         Graphics g = getGraphics();
 
+        this.panel = new JPanel();
+        this.panel.setLocation(0, 0);
+        this.panel.setSize(this.getSize());
+        this.add(this.panel);
+
+        this.textLabel = new JLabel(Label);
+        this.textLabel.setForeground(Color.WHITE);
+        this.textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        this.textLabel.setSize(this.panel.getWidth(), this.panel.getHeight() / 3);
+        this.textLabel.setLocation(0, this.panel.getHeight() / 3);
+        this.panel.add(this.textLabel);
+
+        render();
+
     } // constructor
 
 
@@ -237,11 +283,37 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
         UpperLeftX = Xpos;
         UpperLeftY = Ypos;
 
+
         setBounds(Xpos, Ypos, Height, Height);
         setVisible(true);
-        Graphics g = getGraphics();
+
+        this.panel = new JPanel();
+        this.panel.setLocation(0, 0);
+        this.panel.setSize(this.getSize());
+        this.add(this.panel);
+
+        this.textLabel = new JLabel(Label);
+        this.textLabel.setForeground(Color.WHITE);
+        this.textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        this.textLabel.setSize(this.panel.getWidth(), this.panel.getHeight() / 3);
+        this.textLabel.setLocation(0, this.panel.getHeight() / 3);
+        this.panel.add(this.textLabel);
+
+        render();
 
     } // constructor
+
+    private void render() {
+        this.panel.setBackground(IluminationColor);
+
+        if (this.textLabel != null) {
+            this.textLabel.setText(MessageLabel);
+            if (Color.BLACK.equals(IluminationColor))
+                this.textLabel.setForeground(Color.WHITE);
+            else
+                this.textLabel.setForeground(Color.BLACK);
+        }
+    }
 
     /***************************************************************************
      * CONCRETE Class:: GetX Purpose: This method returns the X (vertical) position of the window in
@@ -340,8 +412,7 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
 
         MessageLabel = s;
 
-        this.setBackground(IluminationColor);
-
+        render();
         repaint();
 
     } // SetLampColor
@@ -409,20 +480,12 @@ public class Indicator extends JFrame implements MonitorUI, InitializingBean {
      *
      * Exceptions: none
      ****************************************************************************/
+    private int paintCount = 0;
+
     @Override
     public void paint(Graphics g) {
+        render();
         super.paint(g);
-
-        this.setBackground(IluminationColor);
-
-        FontMetrics fm = g.getFontMetrics();
-
-        int xLabelPosition = (int) (Height * 0.5) - (int) (fm.stringWidth(MessageLabel) * 0.5);
-        int yLabelPosition = (int) (Height * 0.55);
-
-        g.drawString(MessageLabel, xLabelPosition, yLabelPosition);
-
-        oldIluminationColor = IluminationColor;
     } // paint
 
     private static class BulbAndText extends JPanel {
