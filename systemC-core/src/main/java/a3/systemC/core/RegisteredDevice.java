@@ -30,7 +30,10 @@ public class RegisteredDevice {
 
     private void scheduleNewInvalidation(Runnable invalidatedCallback) {
         this.scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        this.scheduledExecutorService.schedule(invalidatedCallback, 5, TimeUnit.SECONDS);
+        this.scheduledExecutorService.schedule(() -> {
+            this.online = false;
+            invalidatedCallback.run();
+        }, 30, TimeUnit.SECONDS);
     }
 
     public boolean isOnline() {

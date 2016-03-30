@@ -1,5 +1,6 @@
 package a3.systemC.core;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -21,5 +22,9 @@ public class DeviceRegistry {
 
     synchronized RegisteredDevice removeDevice(String id) {
         return registry.remove(id);
+    }
+
+    synchronized Collection<RegisteredDevice> getAllDevices() {
+        return registry.values();
     }
 }

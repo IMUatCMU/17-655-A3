@@ -29,6 +29,5 @@ public class RegistrationHandler implements MonitorMessageHandler {
         RegisteredDevice device = new RegisteredDevice(deviceId, description);
         registry.registerDevice(device);
         heartBeatConsole.writeMessage("[√] " + device.getDeviceId() + " (" + device.getDescription() + ") registered");
-        System.out.println("reigstered: " + device.getDeviceId());
     }
 }

@@ -55,7 +55,7 @@ The fire sensor reports the fire level periodically to the monitor. When the lev
 - Device status registry and monitor
 - Device status query from console
 
-System C will receive device heartbeats to confirm if they are online or offline. Any online and offline event is displayed to the device status monitor. And also user can type in a command to query the currently online and offline devices.
+System C will receive device heartbeats to confirm if they are online or offline. Heartbeat is sent to monitor every second. A device is regarded to go offline if no heartbeat is received from it in 30 seconds. Any online and offline event is displayed to the device status monitor. And also user can type in a command to query the currently online and offline devices.
 
 ## 2. Build Run and Use
 
@@ -198,6 +198,10 @@ Manually turn on sprinkler. Useful when user cancelled the sprinkler off, but re
 **ecs-console> fire sprinkler off**
 
 Manually turn off the sprinkler.
+
+**ecs-console> device-status**
+
+List all the online devices
 
 **ecs-console> x**
 
