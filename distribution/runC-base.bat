@@ -1,2 +1,2 @@
-java -jar ./jars/message.jar &sleep 2
-java -jar ./jars/systemC.jar
+start java -jar ./jars/message.jar
+start java -jar ./jars/systemC.jar
