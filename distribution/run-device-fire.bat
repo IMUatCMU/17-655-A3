@@ -1,3 +1,5 @@
-start java -jar ./jars/fire-alarm-controller.jar 
-start java -jar ./jars/sprinkler-controller.jar 
-start java -jar ./jars/fire-sensor.jar 
+SETLOCAL ENABLEEXTENSIONS
+SET JavaHome = %~dp0jre\Windows\bin\
+start %JavaHome%java.exe -jar ./jars/fire-alarm-controller.jar 
+start %JavaHome%java.exe -jar ./jars/sprinkler-controller.jar 
+start %JavaHome%java.exe -jar ./jars/fire-sensor.jar 

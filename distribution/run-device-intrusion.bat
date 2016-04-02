@@ -1,4 +1,5 @@
+SETLOCAL ENABLEEXTENSIONS
+SET JavaHome = %~dp0jre\Windows\bin\
 
-
-start java -jar ./jars/intrusion-controller.jar 
-start java -jar ./jars/intrusion-sensor.jar 
+start %JavaHome%java.exe -jar ./jars/intrusion-controller.jar 
+start %JavaHome%java.exe -jar ./jars/intrusion-sensor.jar 
