@@ -1,6 +1,8 @@
 package a3.humiditySensor;
 
 /**
+ * State object for humdity sensor
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

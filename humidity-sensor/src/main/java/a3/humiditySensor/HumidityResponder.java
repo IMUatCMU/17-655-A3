@@ -6,6 +6,8 @@ import a3.sensor.MessageResponder;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * {@link MessageResponder} implementation to react to controller humidity simulation.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
