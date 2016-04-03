@@ -8,6 +8,8 @@ import org.springframework.shell.core.annotation.CliCommand;
 import org.springframework.stereotype.Component;
 
 /**
+ * Commands to send out 99 message.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

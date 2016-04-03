@@ -6,6 +6,9 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * {@link MonitorMessageHandler} implementation to handle humidity control. It is refactored from
+ * the original framework provided.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

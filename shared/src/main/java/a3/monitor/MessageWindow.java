@@ -13,6 +13,8 @@ import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
 /**
+ * Message window UI. Used to display log entries.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

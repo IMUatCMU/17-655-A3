@@ -4,6 +4,8 @@ import a3.message.MessageManagerInterface;
 import org.springframework.beans.factory.FactoryBean;
 
 /**
+ * Spring factory bean to create {@link MessageManagerInterface} based on whether property 'ip' is available.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

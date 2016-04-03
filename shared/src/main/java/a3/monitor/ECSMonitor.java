@@ -7,6 +7,13 @@ import java.util.List;
 import javax.annotation.Resource;
 
 /**
+ * Configurable monitor component. It reads message from the remote message manager through
+ * {@link MessageManagerInterface} and delegates the processing to {@link MonitorMessageHandler}
+ * implementations.
+ *
+ * This class also handles initialization of {@link MonitorUI}, in the case they are not configured
+ * to start display themselves.
+ *
  * @since 1.0.0
  */
 public class ECSMonitor extends Thread {

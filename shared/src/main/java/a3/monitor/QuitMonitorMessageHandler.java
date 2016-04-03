@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * {@link MonitorMessageHandler} implementation that takes care of message id 99.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

@@ -6,6 +6,8 @@ import org.springframework.shell.plugin.support.DefaultPromptProvider;
 import org.springframework.stereotype.Component;
 
 /**
+ * Prompt name provider
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

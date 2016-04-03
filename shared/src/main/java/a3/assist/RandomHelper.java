@@ -3,6 +3,8 @@ package a3.assist;
 import java.util.Random;
 
 /**
+ * Help to create random numbers and boolean
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

@@ -3,6 +3,8 @@ package a3.sensor;
 import a3.message.Message;
 
 /**
+ * Common interface for delegate message handling capability to others
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

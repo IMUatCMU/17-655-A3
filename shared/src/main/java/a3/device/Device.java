@@ -8,6 +8,8 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.DisposableBean;
 
 /**
+ * Superclass for all controllers and sensors to provide registration and heartbeat capabilities.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

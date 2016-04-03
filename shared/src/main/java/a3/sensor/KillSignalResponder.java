@@ -3,6 +3,8 @@ package a3.sensor;
 import a3.message.Message;
 
 /**
+ * {@link MessageResponder} implementation to handle message id 99 for shutting down.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

@@ -15,6 +15,8 @@ import javax.swing.SwingUtilities;
 import org.springframework.beans.factory.InitializingBean;
 
 /**
+ * Indicator UI. Provides configuration options to for fix positions and color
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
