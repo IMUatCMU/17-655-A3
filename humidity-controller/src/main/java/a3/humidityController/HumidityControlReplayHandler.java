@@ -9,6 +9,9 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * {@link MonitorMessageHandler} implementation to replay the message id 4 and resubmit it as message id -4.
+ * It enables humidity sensors to simulate ambient humidity change.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
