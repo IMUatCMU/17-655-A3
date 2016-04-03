@@ -1,6 +1,8 @@
 package a3.tempSensor;
 
 /**
+ * State object for temperature sensor
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

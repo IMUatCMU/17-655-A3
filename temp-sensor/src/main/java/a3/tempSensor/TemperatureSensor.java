@@ -22,6 +22,8 @@ import static a3.assist.RandomHelper.coinToss;
 import static a3.assist.RandomHelper.getRandomNumber;
 
 /**
+ * Main class for the temperature sensor. Delegates message processing to {@link MessageResponder}
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
