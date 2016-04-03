@@ -18,6 +18,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 /**
+ * Main class for the temperature controller. Delegates message processing to {@link MonitorMessageHandler}
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

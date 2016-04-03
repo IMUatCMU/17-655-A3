@@ -6,9 +6,13 @@ import a3.monitor.Indicator;
 import a3.monitor.MessageWindow;
 import a3.monitor.MonitorMessageHandler;
 import javax.annotation.Resource;
+import javax.management.monitor.Monitor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * {@link MonitorMessageHandler} implementation to replay the temperature control message to the sensors
+ * for simulation purpose.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
