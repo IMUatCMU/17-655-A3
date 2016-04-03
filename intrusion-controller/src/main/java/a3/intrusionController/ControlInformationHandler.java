@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * {@link MonitorMessageHandler} implementation to handle intrusion alarm control message (id = -6)
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
