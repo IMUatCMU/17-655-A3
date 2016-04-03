@@ -10,6 +10,8 @@ import org.springframework.shell.core.annotation.CliOption;
 import org.springframework.stereotype.Component;
 
 /**
+ * Console command for system B
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

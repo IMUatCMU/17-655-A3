@@ -10,6 +10,8 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * Message handler for fire level report
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

@@ -12,6 +12,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 /**
+ * Confirm Dialog UI
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

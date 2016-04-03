@@ -6,6 +6,8 @@ import org.springframework.shell.Bootstrap;
 import org.springframework.stereotype.Component;
 
 /**
+ * System B
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
