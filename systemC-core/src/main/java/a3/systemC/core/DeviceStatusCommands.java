@@ -7,6 +7,8 @@ import org.springframework.shell.core.annotation.CliCommand;
 import org.springframework.stereotype.Component;
 
 /**
+ * Console commands to query device status
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

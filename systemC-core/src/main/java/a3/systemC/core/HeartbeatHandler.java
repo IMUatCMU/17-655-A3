@@ -5,6 +5,8 @@ import a3.monitor.MonitorMessageHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * {@link MonitorMessageHandler} implementation for heartbeats
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

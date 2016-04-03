@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * Registered device repository
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

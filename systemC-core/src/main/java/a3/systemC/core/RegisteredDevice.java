@@ -5,6 +5,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Model for the registered device
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

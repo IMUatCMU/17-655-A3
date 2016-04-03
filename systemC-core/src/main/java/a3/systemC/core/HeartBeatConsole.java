@@ -1,5 +1,6 @@
 package a3.systemC.core;
 
+import a3.monitor.MessageWindow;
 import a3.monitor.MonitorUI;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,6 +14,8 @@ import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
 /**
+ * Replica of {@link MessageWindow}
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
