@@ -1,6 +1,8 @@
 package a3.fireSensor;
 
 /**
+ * State object for fire sensor
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

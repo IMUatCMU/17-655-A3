@@ -18,6 +18,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 /**
+ * Main class for the fire sensor. Delegates message processing to {@link MessageResponder}
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

@@ -4,6 +4,8 @@ import a3.message.Message;
 import a3.sensor.MessageResponder;
 
 /**
+ * {@link MessageResponder} implementation for responding to fire simulation request.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
