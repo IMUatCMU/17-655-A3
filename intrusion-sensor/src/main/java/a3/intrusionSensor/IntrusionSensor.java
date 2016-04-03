@@ -21,6 +21,8 @@ import static a3.assist.RandomHelper.getRandomNumber;
 import static a3.intrusionSensor.IntrusionContext.*;
 
 /**
+ * Main class for the intrusion sensor. Delegates message processing to {@link MessageResponder}
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

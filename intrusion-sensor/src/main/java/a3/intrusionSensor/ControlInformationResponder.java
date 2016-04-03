@@ -8,6 +8,8 @@ import static a3.intrusionSensor.IntrusionContext.DISARMED;
 import static a3.intrusionSensor.IntrusionContext.NORMAL;
 
 /**
+ * {@link MessageResponder} implementation to arm and disarm sensors.
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

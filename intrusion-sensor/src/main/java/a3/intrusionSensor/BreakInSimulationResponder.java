@@ -6,6 +6,8 @@ import a3.sensor.MessageResponder;
 import static a3.intrusionSensor.IntrusionContext.*;
 
 /**
+ * {@link MessageResponder} implementation to simulate an intrusion event
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */

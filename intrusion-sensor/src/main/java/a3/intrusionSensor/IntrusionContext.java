@@ -1,6 +1,8 @@
 package a3.intrusionSensor;
 
 /**
+ * State object for intrusion sensors
+ *
  * @author Weinan Qiu
  * @since 1.0.0
  */
