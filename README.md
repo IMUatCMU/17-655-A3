@@ -93,7 +93,14 @@ The generated jars require `JRE 1.8` to run. We have included the `JRE` environm
 
 **To run on Windows**
 
-`TBD`
+Open the `A3UI.exe`. The application is a UI wrapper for the windows batch scripts that opens the jars in the background. Windows may display security prompts several times. Confirming those prompts has no harm.
+
+To execute a system, execute the system base first, and then all its devices. Alternatively, you can execute only the devices in interest. For example, for system A, click `Run SystemA Base` first, and then click `Run SystemA Device All`, or alternatively click `Run Device Intrusion`.
+
+__It is important to click `CleanAll` after you finish with each system, otherwise conflicting background process may break next execution__
+
+![Windows UI]
+(./static/WindowsUI.png)
 
 **To run on OS X**
 
