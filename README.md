@@ -165,11 +165,11 @@ Outputs a list of supported commands and their description
 
 **ecs-console> temp --low %d --high %d**
 
-Configures temperature range
+Configures temperature range (--low integer --high integer)
 
 **ecs-console> humid --low %d --high %d**
 
-Configures humidity range
+Configures humidity range (--low integer --high integer)
 
 **ecs-console> break-in simulate --target [window|door|motion|all]**
 
@@ -179,11 +179,11 @@ Simulate a break in event for one or all of window, door and motion
 
 Reset a break in simulation for one or all of window, door and motion
 
-**ecs-console> intrusion-alarm arm**
+**ecs-console> intrusion-alarm arm --target [window|door|motion|all]**
 
 Arm the intrusion alarms
 
-**ecs-console> intrusion-alarm disarm**
+**ecs-console> intrusion-alarm disarm --target [window|door|motion|all]**
 
 Disarm the intrusion alarms
 
