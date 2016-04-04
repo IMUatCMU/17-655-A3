@@ -1,0 +1,1188 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+body .markdown-body {
+    padding: 45px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    word-wrap: break-word;
+}
+
+pre {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body input {
+  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .select::-ms-expand {
+  opacity: 0;
+}
+
+.markdown-body .octicon {
+  font: normal normal normal 16px/1 octicons-anchor;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .anchor {
+  display: inline-block;
+  padding-right: 2px;
+  margin-left: -18px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #000;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h1 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h3 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h5 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body h6 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .pl-c {
+  color: #969896;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #0086b3;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #795da3;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #333;
+}
+
+.markdown-body .pl-ent {
+  color: #63a35c;
+}
+
+.markdown-body .pl-k {
+  color: #a71d5d;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #183691;
+}
+
+.markdown-body .pl-v {
+  color: #ed6a43;
+}
+
+.markdown-body .pl-id {
+  color: #b52a1d;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+.markdown-body .pl-ml {
+  color: #693a17;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mq {
+  color: #008080;
+}
+
+.markdown-body .pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.markdown-body .pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mo {
+  color: #1d3e81;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .plan-price-unit {
+  color: #767676;
+  font-weight: normal;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 0.35em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body .plan-choice {
+  padding: 15px;
+  padding-left: 40px;
+  display: block;
+  border: 1px solid #e0e0e0;
+  position: relative;
+  font-weight: normal;
+  background-color: #fafafa;
+}
+
+.markdown-body .plan-choice.open {
+  background-color: #fff;
+}
+
+.markdown-body .plan-choice.open .plan-choice-seat-breakdown {
+  display: block;
+}
+
+.markdown-body .plan-choice-free {
+  border-radius: 3px 3px 0 0;
+}
+
+.markdown-body .plan-choice-paid {
+  border-radius: 0 0 3px 3px;
+  border-top: 0;
+  margin-bottom: 20px;
+}
+
+.markdown-body .plan-choice-radio {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+}
+
+.markdown-body .plan-choice-exp {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.markdown-body .plan-choice-seat-breakdown {
+  margin-top: 10px;
+  display: none;
+}
+
+.markdown-body :checked+.radio-label {
+  z-index: 1;
+  position: relative;
+  border-color: #4078c0;
+}
+</style><title>README</title></head><body><article class="markdown-body"><h1>
+<a id="user-content-17-655-a3" class="anchor" href="#17-655-a3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>17-655 A3</h1>
+
+<h2>
+<a id="user-content-table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Table of Contents</h2>
+
+<ul>
+<li>
+<a href="#description">1. Description</a>
+
+<ul>
+<li><a href="#system-a">1.1 System A</a></li>
+<li><a href="#system-b">1.2 System B</a></li>
+<li><a href="#system-c">1.3 System C</a></li>
+</ul>
+</li>
+<li>
+<a href="#build-run-and-use">2. Build Run and Use</a>
+
+<ul>
+<li><a href="#build">2.1</a></li>
+<li><a href="#run">2.2</a></li>
+<li><a href="#use">2.3</a></li>
+</ul>
+</li>
+<li><a href="#message-codes">3. Message Codes</a></li>
+<li><a href="#project-structure">4. Project Structure</a></li>
+</ul>
+
+<h2>
+<a id="user-content-1-description" class="anchor" href="#1-description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Description</h2>
+
+<p>This is a guidance to the source code and program as a result of <strong>CMU 17-655 Assignment 3</strong>. In this assignment, we built a distributed museum environment control system. The system adopts a message-oriented architecture. It features a central monitor/console and pluggable sensors and controllers.</p>
+
+<p>As per the requirements of the assignment, we present the features in <code>System A</code>, <code>System B</code> and <code>System C</code>.</p>
+
+<h3>
+<a id="user-content-11-system-a" class="anchor" href="#11-system-a" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.1 System A</h3>
+
+<p>System A features:</p>
+
+<ul>
+<li>Temperature sensor</li>
+<li>Temperature controller</li>
+<li>Humidity sensor</li>
+<li>Humidity controller</li>
+<li>Intrusion sensor</li>
+<li>Intrusion controller</li>
+<li>Central monitor with indicators</li>
+<li>Central console</li>
+</ul>
+
+<p>The temperature sensor samples ambient temperature readings and send it back to the monitor. The monitor would react to those readings based on its temperature upper/lower limit settings. If the temperature is too high or too low, it would turn on the indicator accordingly and signal the temperature controller to turn on or off the chiller and/or heater. (Note in this implementation, the temperature sensor is a software simulation and only creates its readings based on the tempreature controller control signal)</p>
+
+<p>The humidity sensor samples ambient humidity readings and send it back to the monitor. The monitor would react to those readings based on its humidity upper/lower limit settings. If the humidity is too high or too low, it would turn on the indicator accordingly and signal the humidity controller to turn on or off the humidifer and/or the dehumidifer. (Note in this implementation, the humidity sensor is a software simulation and only creates its readings based on the humidity controller control signal)</p>
+
+<p>The intrusion sensor can detect window break in, door break in and motions. It reports its status periodically to the monitor. On a break in event, the monitor will turn on the indicator and the intrusion controller will sound the alarm. In this simulation, the alarm is simulated by a colored indicator and intrusion event is simulated by a command input on the console (more on the commands later).</p>
+
+<h3>
+<a id="user-content-12-system-b" class="anchor" href="#12-system-b" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.2 System B</h3>
+
+<p>System B features:</p>
+
+<ul>
+<li>All features from System A</li>
+<li>Fire sensor</li>
+<li>Fire alarm controller</li>
+<li>Sprinkler controller</li>
+</ul>
+
+<p>The fire sensor reports the fire level periodically to the monitor. When the level is greater than 0, there is a fire. And the monitor will turn on the fire alarm controller and sprinkler upon user approval. If user does not react within 10 seconds, they are automatically turned on. The extinguishing process is simulated by deducting a constant level of 5 from the total fire level on every sprinkler heartbeat. A fire event can be simulated by a command input from the console with a specific fire level between 0 and 50 (more on the commands later).</p>
+
+<h3>
+<a id="user-content-13-system-c" class="anchor" href="#13-system-c" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.3 System C</h3>
+
+<ul>
+<li>All features from System A and System B</li>
+<li>Device status registry and monitor</li>
+<li>Device status query from console</li>
+</ul>
+
+<p>System C will receive device heartbeats to confirm if they are online or offline. Heartbeat is sent to monitor every second. A device is regarded to go offline if no heartbeat is received from it in 30 seconds. Any online and offline event is displayed to the device status monitor. And also user can type in a command to query the currently online and offline devices.</p>
+
+<h2>
+<a id="user-content-2-build-run-and-use" class="anchor" href="#2-build-run-and-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Build Run and Use</h2>
+
+<p>This section describes how to build and execute the system.</p>
+
+<h3>
+<a id="user-content-21-build" class="anchor" href="#21-build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.1 Build</h3>
+
+<p>Make sure you have <a href="https://maven.apache.org/docs/3.3.3/release-notes.html">Apache Maven 3.3.3</a> installed. Then execute in the terminal or command prompt:</p>
+
+<div class="highlight highlight-source-shell"><pre>git clone https://github.com/davidiamyou/17-655-A3.git
+<span class="pl-c1">cd</span> 17-655-A3
+mvn clean install</pre></div>
+
+<p>The artifacts will be placed in the <code>./distribution/jars</code> folder. There should be 13 jars:</p>
+
+<ul>
+<li>fire-alarm-controller.jar</li>
+<li>fire-sensor.jar</li>
+<li>humidity-controller.jar</li>
+<li>humidity-sensor.jar</li>
+<li>intrusion-controller.jar</li>
+<li>intrusion-sensor.jar</li>
+<li>message.jar</li>
+<li>sprinkler-controller.jar</li>
+<li>systemA.jar</li>
+<li>systemB.jar</li>
+<li>systemC.jar</li>
+<li>temp-controller.jar</li>
+<li>temp-sensor.jar</li>
+</ul>
+
+<h3>
+<a id="user-content-22-run" class="anchor" href="#22-run" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2 Run</h3>
+
+<p>The generated jars require <code>JRE 1.8</code> to run. We have included the <code>JRE</code> environment for <code>Windows (x64)</code> and <code>OS X</code> in the <code>./distribution/jre</code> folder. The generated jars are all executables, but since System A(B|C) needs different jars to compose its overall functionality, we have included <strong>execution scripts</strong> (for <code>OS X</code>) and <strong>exe wrapper</strong> (for <code>Windows</code>) to make execution more convienient.</p>
+
+<p><strong>To run on Windows</strong></p>
+
+<p>Open the <code>A3UI.exe</code>. The application is a UI wrapper for the windows batch scripts that opens the jars in the background. Windows may display security prompts several times. Confirming those prompts has no harm.</p>
+
+<p>To execute a system, execute the system base first, and then all its devices. Alternatively, you can execute only the devices in interest. For example, for system A, click <code>Run SystemA Base</code> first, and then click <code>Run SystemA Device All</code>, or alternatively click <code>Run Device Intrusion</code>.</p>
+
+<p><strong>It is important to click <code>CleanAll</code> after you finish with each system, otherwise conflicting background process may break next execution</strong></p>
+
+<p><a href="/Users/davidiamyou/workspace/17-655-A3/static/WindowsUI.png" target="_blank"><img src="/Users/davidiamyou/workspace/17-655-A3/static/WindowsUI.png" alt="Windows UI" style="max-width:100%;"></a></p>
+
+<p><strong>To run on OS X</strong></p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> distribution
+chmod +x <span class="pl-k">*</span>sh
+./runA-base.sh
+<span class="pl-c">#or ./runB-base.sh </span>
+<span class="pl-c">#or ./runC-base.sh</span></pre></div>
+
+<p>This starts the monitor/console and message middleware for System A(B|C), now you have the choice to start individal device pairs (sensor and controller) or start everything. Note that it is not recommended to start everything on a single computer, the Java threads can consume a lot of resources, which affects message throughput. Some controller reaction can be deplayed on a slow computer, which can cause confusion.</p>
+
+<p>To start individal device pair:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># temperature</span>
+./run-device-temp.sh
+
+<span class="pl-c"># humidity</span>
+./run-device-humidity.sh
+
+<span class="pl-c"># intrusion</span>
+./run-device-intrusion.sh
+
+<span class="pl-c"># fire</span>
+./run-device-fire.sh</pre></div>
+
+<p>To start everything:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># system A</span>
+./runA-device-all.sh
+
+<span class="pl-c"># system B</span>
+./runB-device-all.sh
+
+<span class="pl-c"># system C</span>
+./runC-device-all.sh</pre></div>
+
+<p>Most of the scripts above starts <code>Java</code> on a background process, so <code>Command+C</code> will not terminate properly. Please use the provided scripts to clean up after each execution.</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># clean all java process</span>
+./clean-all.sh
+
+<span class="pl-c"># clean fire devices</span>
+./clean-device-fire.sh
+
+<span class="pl-c"># clean humidity devices</span>
+./clean-device-humidity.sh
+
+<span class="pl-c"># clean intrusion devices</span>
+./clean-device-intrusion.sh
+
+<span class="pl-c"># clean temperature devices</span>
+./clean-device-temp.sh</pre></div>
+
+<h3>
+<a id="user-content-23-use" class="anchor" href="#23-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.3 Use</h3>
+
+<p>As mentioned before, some of the sensor events are simulated by typing command into the console. The following commands are supported:</p>
+
+<p><strong>ecs-console&gt; help</strong></p>
+
+<p>Outputs a list of supported commands and their description</p>
+
+<p><strong>ecs-console&gt; temp --low %d --high %d</strong></p>
+
+<p>Configures temperature range (--low integer --high integer)</p>
+
+<p><strong>ecs-console&gt; humid --low %d --high %d</strong></p>
+
+<p>Configures humidity range (--low integer --high integer)</p>
+
+<p><strong>ecs-console&gt; break-in simulate --target [window|door|motion|all]</strong></p>
+
+<p>Simulate a break in event for one or all of window, door and motion</p>
+
+<p><strong>ecs-console&gt; break-in reset --target [window|door|motion|all]</strong></p>
+
+<p>Reset a break in simulation for one or all of window, door and motion</p>
+
+<p><strong>ecs-console&gt; intrusion-alarm arm --target [window|door|motion|all]</strong></p>
+
+<p>Arm the intrusion alarms</p>
+
+<p><strong>ecs-console&gt; intrusion-alarm disarm --target [window|door|motion|all]</strong></p>
+
+<p>Disarm the intrusion alarms</p>
+
+<p><strong>ecs-console&gt; fire simulate --level %d</strong></p>
+
+<p>Simulate a fire event with a fire level between 0 and 50</p>
+
+<p><strong>ecs-console&gt; fire sprinkler on</strong></p>
+
+<p>Manually turn on sprinkler. Useful when user cancelled the sprinkler off, but regreted.</p>
+
+<p><strong>ecs-console&gt; fire sprinkler off</strong></p>
+
+<p>Manually turn off the sprinkler.</p>
+
+<p><strong>ecs-console&gt; device-status</strong></p>
+
+<p>List all the online devices</p>
+
+<p><strong>ecs-console&gt; x</strong></p>
+
+<p>Properly exists the program</p>
+
+<h2>
+<a id="user-content-3-message-codes" class="anchor" href="#3-message-codes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Message Codes</h2>
+
+<p>Internally, the devices exchanges data, events and control information using a standardized message schema. In addition to what is already described in the assignment handout, the project also included the following message codes:</p>
+
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th align="center">Target</th>
+<th align="center">Message</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td align="center">monitor, intrusion controller</td>
+<td align="center">W1</td>
+<td align="right">Window intrusion</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">W0</td>
+<td align="right">Window status is normal</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">D1</td>
+<td align="right">Door intrusion</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">D0</td>
+<td align="right">Door status is normal</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">M1</td>
+<td align="right">Motion detected</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">M0</td>
+<td align="right">Motion status is normal</td>
+</tr>
+<tr>
+<td>-6</td>
+<td align="center">intrusion controller</td>
+<td align="center">W1</td>
+<td align="right">Arm window</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">W0</td>
+<td align="right">Disarm window</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">D1</td>
+<td align="right">Arm door</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">D0</td>
+<td align="right">Disarm door</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">M1</td>
+<td align="right">Arm motion</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">M0</td>
+<td align="right">Disarm motion</td>
+</tr>
+<tr>
+<td>7</td>
+<td align="center">intrusion sensor</td>
+<td align="center">W1</td>
+<td align="right">Simulate window break in</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">W0</td>
+<td align="right">Reset window simulation</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">D1</td>
+<td align="right">Simulate door break in</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">D0</td>
+<td align="right">Reset door simulation</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">M1</td>
+<td align="right">Simulate motion detection</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">M0</td>
+<td align="right">Reset motion simulation</td>
+</tr>
+<tr>
+<td>8</td>
+<td align="center">fire sensor</td>
+<td align="center">integer[0,50]</td>
+<td align="right">Simulate fire</td>
+</tr>
+<tr>
+<td>-8</td>
+<td align="center">fire alarm controller</td>
+<td align="center">F1</td>
+<td align="right">Turn on fire alarm</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">F0</td>
+<td align="right">Turn off fire alarm</td>
+</tr>
+<tr>
+<td>9</td>
+<td align="center">monitor</td>
+<td align="center">integer</td>
+<td align="right">Report fire level</td>
+</tr>
+<tr>
+<td>-9</td>
+<td align="center">sprinkler controller</td>
+<td align="center">S1</td>
+<td align="right">Turn on sprinkler</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center">S0</td>
+<td align="right">Turn off sprinkler</td>
+</tr>
+<tr>
+<td>-10</td>
+<td align="center">fire sensor</td>
+<td align="center">integer</td>
+<td align="right">Water level from sprinkler</td>
+</tr>
+<tr>
+<td>1000</td>
+<td align="center">device monitor</td>
+<td align="center">$deviceId;$description</td>
+<td align="right">Device registration</td>
+</tr>
+<tr>
+<td>1001</td>
+<td align="center">device monitor</td>
+<td align="center">$deviceId</td>
+<td align="right">Device heartbeat</td>
+</tr>
+<tr>
+<td>1002</td>
+<td align="center">device monitor</td>
+<td align="center">$deviceId</td>
+<td align="right">Device unregistration</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="user-content-4-project-structure" class="anchor" href="#4-project-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Project Structure</h2>
+
+<p>The project is broken down to 17 modules:</p>
+
+<ul>
+<li>
+<code>shared</code>: shared infrastructure, configurable UI, temperature and humidity devices, utilities</li>
+<li>
+<code>message</code>: message middleware</li>
+<li>
+<code>systemA</code>: System A wrapper</li>
+<li>
+<code>temp-sensor</code>: temperature sensor</li>
+<li>
+<code>humidity-sensor</code>: humidity sensor</li>
+<li>
+<code>temp-controller</code>: temperature controller</li>
+<li>
+<code>humidity-controller</code>: humidity controller</li>
+<li>
+<code>intrusion-sensor</code>: intrusion sensor</li>
+<li>
+<code>intrusion-controller</code>: intrusion controller</li>
+<li>
+<code>systemB</code>: System B wrapper</li>
+<li>
+<code>systemA-core</code>: System A dependencies, extracted so it's easy to include in System B and C without system specific configuration files</li>
+<li>
+<code>systemB-core</code>: System B dependencies, extracted for the same reason</li>
+<li>
+<code>fire-sensor</code>: fire sensor</li>
+<li>
+<code>fire-alarm-controller</code>: fire alarm controller</li>
+<li>
+<code>sprinkler-controller</code>: sprinkler controller</li>
+<li>
+<code>systemC-core</code>: System C dependencies</li>
+<li>
+<code>systemC</code>: System C</li>
+</ul>
+
+<p>Most of these modules is built to be their own executable jars, except for <code>shared</code>, <code>systemA-core</code>, <code>systemB-core</code> and <code>systemC-core</code>.</p>
+</article></body></html>

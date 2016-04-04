@@ -223,8 +223,8 @@ Internally, the devices exchanges data, events and control information using a s
 | 6    | monitor, intrusion controller      | W1                           | Window intrusion          |
 |      |                                    | W0                           | Window status is normal   |
 |      |                                    | D1                           | Door intrusion            |
-|      |                                    | D1                           | Door status is normal     |
-|      |                                    | M0                           | Motion detected           |
+|      |                                    | D0                           | Door status is normal     |
+|      |                                    | M1                           | Motion detected           |
 |      |                                    | M0                           | Motion status is normal   |
 | -6   | intrusion controller 		        | W1                           | Arm window                |
 |      |                                    | W0                           | Disarm window			   |
@@ -235,7 +235,7 @@ Internally, the devices exchanges data, events and control information using a s
 | 7    | intrusion sensor 			        | W1                           | Simulate window break in  |
 |      |                                    | W0                           | Reset window simulation   |
 |      |                                    | D1                           | Simulate door break in    |
-|      |                                    | D9                           | Reset door simulation     |
+|      |                                    | D0                           | Reset door simulation     |
 |      |                                    | M1                           | Simulate motion detection |
 |      |                                    | M0                           | Reset motion simulation   |
 | 8    | fire sensor            			| integer[0,50]                | Simulate fire   		   |
